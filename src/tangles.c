@@ -6,10 +6,12 @@
 #include <string.h>
 
 #include "lib/main.h"
+#include "lib/perlin.h"
 
 char bytes[WID * HEI * 3];
 
-void draw_rect(int maxsize, int r, int g, int b) {
+void draw_rect(int maxsize, unsigned char r, unsigned char g, unsigned char b) {
+    generate_noise();
 	int w = rand()%maxsize;
 	int h = maxsize-w;
 	int x0 = rand()%(WID-w);
@@ -18,9 +20,10 @@ void draw_rect(int maxsize, int r, int g, int b) {
 	int x, y;
    	for (x=x0; x<x0+w; x++) {
 		for (y=y0; y<y0+h; y++) {
-			bytes[(WID*y+x)*3] = r;
-			bytes[(WID*y+x)*3+1] = g;
-			bytes[(WID*y+x)*3+2] = b;
+            unsigned char const noise_shade = 200 + (char) (fractal(x, y, 0.002, 4) * 55);
+            bytes[(WID*y+x)*3] = r * ((float)noise_shade / 255);
+			bytes[(WID*y+x)*3+1] = g * ((float)noise_shade / 255);
+			bytes[(WID*y+x)*3+2] = b * ((float)noise_shade / 255);
 		}
 	}
 }
