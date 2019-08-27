@@ -1,15 +1,12 @@
 # procedural-wallpapers
-A collection of wallpaper generators
+A collection of wallpaper generators. Forked from [bagyoni](https://github.com/bagyoni/procedural-wallpapers)
 
 ## How to use (Linux only)
-1. `sudo apt-get install gcc imagemagick`
-1. `git clone https://github.com/ba-sz-at/procedural-wallpapers.git`
-1. `cd procedural-wallpapers/src`
-1. Open lib/main.h for editing.
-1. Change WID and HEI to the width and height of your screen (pixels), and save.
-1. `./wp-gen`
-1. The previous command should have generated a *wallpaper.jpg* in src/out. Set it as your desktop background.
-1. Add the *wp-gen* script to your startup applications. This will change your wallpaper at each startup.
+1. Install `imagemagick`, `base-devel` and `cmake`
+1. Clone this repository
+1. Open lib/main.h for editing and change WID and HEI to the width and height of your screen (pixels).
+1. `cmake TARGET` with TARGET=one of the algorithms found as .c file in `src/`
+1. The compiled program outputs the image given as argument, or `TARGET.ppm` as default if no argument has been given.
 
 ## Generators
 
@@ -90,9 +87,11 @@ A collection of wallpaper generators
 </table>
 
 ## Disclaimers
+
+##### From the forked repository:
 * The *landscape* generator is shamelessly stolen from here: https://tyrellrummage.github.io/landscape/
 * The *marrowlike* generator follows the recursive algorithm described here: http://pcg.wikidot.com/forum/t-79282/multiplicative-cascades-ish
 * The *fern* generator uses a fractal image compression method that might be patented (I couldn't find much information about it)
 
 ## Licensing
-All programs, except for those listed in the Disclaimers section, are in the public domain.
+All programs, except for those listed in the Disclaimers section, are in the public domain. Feel free to use them as you like.

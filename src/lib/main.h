@@ -2,8 +2,8 @@
 #define MAIN_H
 
 // replace the 0s with the width and height of your display respectively
-#define WID 0
-#define HEI 0
+#define WID 1920
+#define HEI 1080
 
 #if WID == 0 || HEI == 0
 	#error "You haven't set your screen resolution. Please go to lib/main.h and change the WID and HEI macros."
