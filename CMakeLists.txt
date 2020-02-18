@@ -15,6 +15,7 @@ set (IMAGEKINDS
         water
         wood
         zebra
+        pixelstars
         )
 
 set(COMMON_SOURCE_FILES

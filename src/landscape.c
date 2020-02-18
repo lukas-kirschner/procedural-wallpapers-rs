@@ -81,8 +81,8 @@ void draw() {
 			b = m;
 			break;
 	}
-	generate_layer(HEI*1/5, 7, r, g, b);
-	generate_layer(HEI*2/5, 7, r-20, g-20, b-20);
+	generate_layer(HEI*2.3/5, 7, r, g, b);
+	generate_layer(HEI*2.5/5, 7, r-20, g-20, b-20);
 	generate_layer(HEI*3/5, 5, r-50, g-50, b-50);
 	generate_layer(HEI*4/5, 5, r-100, g-100, b-100);
 }
