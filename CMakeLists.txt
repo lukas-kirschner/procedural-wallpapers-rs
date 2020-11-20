@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 project(procedural-wallpapers)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 set (IMAGEKINDS
         clouds
@@ -34,8 +35,3 @@ foreach(KIND ${IMAGEKINDS})
     target_link_libraries(${KIND} m)
     target_compile_definitions(${KIND} PRIVATE PRGNAME=${KIND})
 endforeach(KIND)
-#add_executable(clouds ${COMMON_SOURCE_FILES} src/clouds.c)
-#target_link_libraries(clouds m)
-#add_executable(fern ${COMMON_SOURCE_FILES} src/fern.c)
-#target_link_libraries(fern m)
-#set_property(TARGET procedural-wallpapers PROPERTY C_STANDARD 11)

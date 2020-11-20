@@ -89,7 +89,7 @@ void draw() {//TODO fill background with noise?
     generate_noise();
     for (int x = 0; x < WID; ++x) {
         for (int y = 0; y < HEI; ++y) {
-            if (!(rand() % 6)) {
+            if (!(rand() % 12)) {
                 double const likeliness = get_star_likeliness(x, y);
                 uint8_t const ran = rand() % UINT8_MAX;
                 if ((uint16_t)ran * (likeliness + 1) >= UINT8_MAX * CUTOFF) { // Draw a star
