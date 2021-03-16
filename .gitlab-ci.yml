@@ -12,7 +12,6 @@ cache:
     - CMakeFiles
     - CMakeCache.txt
     - cmake_install.cmake
-    - bin
 
 build-programs:
   stage: build
@@ -35,7 +34,7 @@ generate-images:
     expose_as: 'thumbnails'
     name: 'thumbnails-$CI_COMMIT_REF_SLUG'
     paths:
-      - bin/*\.ppm
+      - bin/*.ppm
   only:
     - master
     - tags
