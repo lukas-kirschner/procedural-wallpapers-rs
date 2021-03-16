@@ -31,7 +31,6 @@ generate-images:
     - cmake .
     - make run_all
   artifacts:
-    expose_as: 'thumbnails'
     name: 'thumbnails-$CI_COMMIT_REF_SLUG'
     paths:
       - bin/*.ppm
