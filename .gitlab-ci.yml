@@ -1,0 +1,27 @@
+image: ubuntu-latest
+stages:
+  - build
+  - generate
+
+variables:
+  GIT_STRATEGY: clone
+  GIT_SUBMODULE_STRATEGY: recursive
+
+cache:
+  paths:
+    - CMakeFiles
+    - CMakeCache.txt
+    - cmake_install.cmake
+    - bin
+
+build-programs:
+  stage: build
+  script:
+    - cmake .
+    - cmake --build . --use-stderr
+  artifacts:
+    paths:
+      - bin/[a-zA-Z]+
+  only:
+    - master
+    - tags

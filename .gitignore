@@ -1,6 +1,7 @@
-out/
-.idea/workspace.xml
-.idea/usage.statistics.xml
-.idea/tasks.xml
-.idea/shelf/
-cmake-build-debug/
+/out/
+/cmake-build-debug/
+/CMakeFiles/
+/bin/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile

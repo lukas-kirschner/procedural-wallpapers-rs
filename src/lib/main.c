@@ -14,6 +14,8 @@
 #define PRGNAME out
 #endif
 
+uint8_t bytes[WID * HEI * 3];
+
 int main(int argc, char *argv[]) {
 
 	srand((unsigned) time(NULL));
@@ -26,11 +28,11 @@ int main(int argc, char *argv[]) {
         fname = argv[1];
 	}
 	FILE *out = fopen(fname, "w");
-	
+
 	fprintf(out, "P6\n");
 	fprintf(out, "%d %d\n", WID, HEI);
 	fprintf(out, "255\n");
-	
+
 	fwrite(bytes, 1, WID*HEI*3, out);
 	fclose(out);
 	return 0;

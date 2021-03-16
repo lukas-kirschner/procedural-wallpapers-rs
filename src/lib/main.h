@@ -11,7 +11,7 @@
 	#error "You haven't set your screen resolution. Please go to lib/main.h and change the WID and HEI macros."
 #endif
 
-uint8_t bytes[WID * HEI * 3];
+extern uint8_t bytes[]; //TODO Refactor to use class?
 
 int main(int argc, char *argv[]);
 void draw();
