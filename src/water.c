@@ -10,7 +10,6 @@
 #define MAX_WLEN 25
 #define MIN_WLEN 10
 
-char r, g, b;
 int num_waves;
 
 void draw_wave(int cx, int cy, float amp, float wavelength) {

@@ -25,3 +25,15 @@ build-programs:
   only:
     - master
     - tags
+
+generate-images:
+  stage: generate
+  script:
+    - cmake .
+    - make run_all
+  artifacts:
+    paths:
+      - bin/[a-zA-Z]+\.ppm
+  only:
+    - master
+    - tags
