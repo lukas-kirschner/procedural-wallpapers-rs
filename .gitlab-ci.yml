@@ -12,6 +12,8 @@ cache:
     - CMakeFiles
     - CMakeCache.txt
     - cmake_install.cmake
+    - ext
+    - cxxopts
 
 build-programs:
   stage: build

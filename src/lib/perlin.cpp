@@ -2,8 +2,8 @@
 // Attila Bagyoni, 2018
 // This software is public domain. Do whatever you want with it.
 
-#include <stdlib.h>
-#include <math.h>
+#include <cstdlib>
+#include <cmath>
 
 #include "main.h"
 

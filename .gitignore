@@ -5,3 +5,7 @@
 /CMakeCache.txt
 /cmake_install.cmake
 /Makefile
+/ext
+/cxxopts
+/Testing
+/procedural-wallpapers.cbp

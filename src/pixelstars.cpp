@@ -45,12 +45,13 @@ static inline bool pixel_not_black(size_t x, size_t y) {
     return false;
 }
 
-static void fill_background(){
-    for (int x = 0; x < WID; x++){
-        for (int y = 0; y < HEI; y++){
-            uint8_t const greyval = ((fractal(x,y,0.004f,5) + 1.0f) / 2.0f) * (double)(PIXEL_BACKGROUND_MAX_GREYVALUE - 1);
-            for (size_t i = 0; i < 3; i++){
-                pixel_at(x,y)[i] = greyval;
+static void fill_background() {
+    for (int x = 0; x < WID; x++) {
+        for (int y = 0; y < HEI; y++) {
+            uint8_t const greyval =
+                    ((fractal(x, y, 0.004f, 5) + 1.0f) / 2.0f) * (double) (PIXEL_BACKGROUND_MAX_GREYVALUE - 1);
+            for (size_t i = 0; i < 3; i++) {
+                pixel_at(x, y)[i] = greyval;
             }
         }
     }
@@ -62,7 +63,7 @@ static void fill_background(){
 static double get_star_likeliness(size_t x, size_t y) {
     float const noise_amount = fractal(x, y, 0.002f, 5);
     bool const has_neighbour =
-            (x > 0 && pixel_not_black(x-1,y)) || (pixel_not_black(x,y-1));
+            (x > 0 && pixel_not_black(x - 1, y)) || (pixel_not_black(x, y - 1));
     return (BASE_LIKELINESS + (NOISE_INFLUENCE * noise_amount)) * (has_neighbour ? 0.8 : 1);
 }
 
@@ -92,7 +93,7 @@ void draw() {//TODO fill background with noise?
             if (!(rand() % 12)) {
                 double const likeliness = get_star_likeliness(x, y);
                 uint8_t const ran = rand() % UINT8_MAX;
-                if ((uint16_t)ran * (likeliness + 1) >= UINT8_MAX * CUTOFF) { // Draw a star
+                if ((uint16_t) ran * (likeliness + 1) >= UINT8_MAX * CUTOFF) { // Draw a star
                     int const ran_rem = ran - (UINT8_MAX / 2.0);
                     bytes[(WID * y + x) * 3 + 0] = r * likeliness;
                     bytes[(WID * y + x) * 3 + 1] = g * (1 - likeliness);

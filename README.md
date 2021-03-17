@@ -1,5 +1,6 @@
 # procedural-wallpapers
-A collection of wallpaper generators. Forked from [bagyoni](https://github.com/bagyoni/procedural-wallpapers)
+A collection of wallpaper generators. Forked from [bagyoni](https://github.com/bagyoni/procedural-wallpapers).
+Rewritten in C++.
 
 ## How to use (Linux only)
 1. Install `imagemagick`, `base-devel` and `cmake`
