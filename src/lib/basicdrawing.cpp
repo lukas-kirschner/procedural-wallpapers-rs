@@ -13,7 +13,7 @@ void fgcolor(uint8_t red, uint8_t green, uint8_t blue) {
 }
 
 void draw_point(int x, int y) {
-    if (x > 0 && x < bytes->width && y > 0 && y < HEI) {
+    if (x > 0 && x < bytes->width && y > 0 && y < bytes->height) {
         bytes->setR(x, y, r);
         bytes->setG(x, y, g);
         bytes->setB(x, y, b);

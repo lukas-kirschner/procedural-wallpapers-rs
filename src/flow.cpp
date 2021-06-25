@@ -11,20 +11,20 @@
 uint16_t const NUM_PARTICLES = 5000;
 uint16_t const PATH_LEN = 300;
 
-double flow[WID * HEI]; // TODO refactor!!!
 double curvature;
 double frequency;
 int8_t signum;
 
-void make_single_path() {
+template<typename bitDepth>
+void make_single_path(Perlin<bitDepth> const &perlin, double *flow) {
     double x = rand() % bytes->width;
     double y = rand() % bytes->height;
     int i = 0;
-    while (i < PATH_LEN && x > 0 && x < bytes->width && y > 0 && y < HEI) {
+    while (i < PATH_LEN && x > 0 && x < bytes->width && y > 0 && y < bytes->height) {
         int xi = x;
         int yi = y;
         flow[(bytes->width * yi + xi)] += ((double) (PATH_LEN - i)) / PATH_LEN;
-        double angle = 2 * M_PI * (fractal(x, y, frequency, 6) - 0.5) * curvature;
+        double angle = 2 * M_PI * (perlin.fractal(x, y, frequency, 6) - 0.5) * curvature;
         x += cos(angle);
         y += sin(angle);
         i++;
@@ -32,13 +32,15 @@ void make_single_path() {
 }
 
 void draw() {
-    generate_noise();
+    auto *flow = new double[bytes->width * bytes->height];
+    Perlin myPerlin = Perlin(*bytes);
+    myPerlin.generate_noise();
     signum = (rand() & 0x1) ? 1 : -1;
     curvature = 0.3 + 0.1 * ((float) (rand() & 0xFF)) / 0xFF;
     frequency = 0.003 + 0.003 * ((float) (rand() & 0xFF)) / 0xFF;
     int i;
     for (i = 0; i < NUM_PARTICLES; i++) {
-        make_single_path();
+        make_single_path(myPerlin, flow);
     }
     double max;
     for (i = 0; i < bytes->width * bytes->height; i++) {
@@ -52,4 +54,5 @@ void draw() {
             bytes->setB(x, y, val);
         }
     }
+    delete[] flow;
 }

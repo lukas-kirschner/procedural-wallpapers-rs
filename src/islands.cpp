@@ -6,7 +6,7 @@
 #include "lib/perlin.h"
 
 #define GRID_MARGINS 10//TODO refactor:
-#define GRID_SIZE_IN_PX ((((bytes->width > HEI) ? HEI : bytes->width) - 2 * GRID_MARGINS) / 6)
+#define GRID_SIZE_IN_PX ((((bytes->width > bytes->height) ? bytes->height : bytes->width) - 2 * GRID_MARGINS) / 6)
 
 uint8_t const THRESHOLDVAL1 = 195;
 uint8_t const THRESHOLDVAL2 = 190;
@@ -52,11 +52,12 @@ void draw_vert_dashed(int x) {
 }
 
 void draw() {
-    generate_noise();
+    Perlin myPerlin = Perlin(*bytes);
+    myPerlin.generate_noise();
     int x, y;
     for (x = 0; x < bytes->width; x++) {
-        for (y = 0; y < HEI; y++) {
-            unsigned char val = 185 + (char) (fractal(x, y, 0.004, 8) * 70);
+        for (y = 0; y < bytes->height; y++) {
+            unsigned char val = 185 + (char) (myPerlin.fractal(x, y, 0.004, 8) * 70);
             bytes->setR(x, y, compute_threshold(val, foreground_base_color[0] * val / 255, border_color[0],
                                                 (background_base_color[0] + val) / 2));
             bytes->setG(x, y, compute_threshold(val, foreground_base_color[1] * val / 255, border_color[1],

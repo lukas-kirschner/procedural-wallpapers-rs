@@ -26,7 +26,7 @@ void generate_points(double steepness) {
         double avg = (points->at(i) + points->at(i - 1)) / 2.0;
 
         //get an offset
-        double offsetAm = (double) HEI / ((double) (points->size() - 1) * 20 / steepness);
+        double offsetAm = (double) bytes->height / ((double) (points->size() - 1) * 20 / steepness);
 
         //make the offset random and able to be negative
         int rnd = rand() % ((int) offsetAm * 2 + 1) - (int) offsetAm;
@@ -86,8 +86,8 @@ void draw() {
         default:
             break;
     }
-    generate_layer(HEI * 2.3 / 5, 7, r, g, b);
-    generate_layer(HEI * 2.5 / 5, 7, r - 20, g - 20, b - 20);
-    generate_layer(HEI * 3.0 / 5, 5, r - 50, g - 50, b - 50);
-    generate_layer(HEI * 4.0 / 5, 5, r - 100, g - 100, b - 100);
+    generate_layer(bytes->height * 2.3 / 5, 7, r, g, b);
+    generate_layer(bytes->height * 2.5 / 5, 7, r - 20, g - 20, b - 20);
+    generate_layer(bytes->height * 3.0 / 5, 5, r - 50, g - 50, b - 50);
+    generate_layer(bytes->height * 4.0 / 5, 5, r - 100, g - 100, b - 100);
 }

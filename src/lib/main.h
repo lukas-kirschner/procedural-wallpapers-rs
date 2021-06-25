@@ -5,10 +5,10 @@
 #include "BytesImage.h"
 
 // Default values for width and height
-#define WID 1920
-#define HEI 1080
+#define DEFAULT_WIDTH 1920
+#define DEFAULT_HEIGHT 1080
 
-extern EightBitImage *bytes; //TODO Refactor to use class?
+extern EightBitImage *bytes;
 
 int main(int argc, char *argv[]);
 

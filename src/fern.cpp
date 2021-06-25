@@ -50,7 +50,7 @@ void next_step() {
     }
     brush_x = coeffs[i][0] * brush_x + coeffs[i][1] * brush_y + coeffs[i][4];
     brush_y = coeffs[i][2] * brush_x + coeffs[i][3] * brush_y + coeffs[i][5];
-    draw_point(brush_x * HEI / 13 + bytes->width / 2, -brush_y * HEI / 13 + HEI);
+    draw_point(brush_x * bytes->height / 13 + bytes->width / 2, -brush_y * bytes->height / 13 + bytes->height);
 }
 
 void draw() {
