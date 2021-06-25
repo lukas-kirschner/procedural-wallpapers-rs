@@ -39,6 +39,7 @@ generate-images:
     name: 'thumbnails-$CI_COMMIT_REF_SLUG'
     paths:
       - bin/*.png
+    expire_in: 30 years
   only:
     - master
     - tags
