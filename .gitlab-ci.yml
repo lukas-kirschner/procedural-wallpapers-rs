@@ -2,6 +2,9 @@ image: lycantropos/cmake:latest
 stages:
   - build
   - generate
+before_script:
+  - apt-get update && apt-get upgrade
+  - apt-get install --no-install-recommends libgraphicsmagick1-dev
 
 variables:
   GIT_STRATEGY: clone
@@ -35,7 +38,7 @@ generate-images:
   artifacts:
     name: 'thumbnails-$CI_COMMIT_REF_SLUG'
     paths:
-      - bin/*.ppm
+      - bin/*.png
   only:
     - master
     - tags

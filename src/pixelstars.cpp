@@ -5,10 +5,8 @@
  * pixelstars draws a random number of pixels in a random color scheme influenced by perlin noise.
  */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <stdint.h>
+#include <cstdlib>
+#include <cstring>
 
 #include "lib/main.h"
 #include "lib/perlin.h"

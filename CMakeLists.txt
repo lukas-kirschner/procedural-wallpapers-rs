@@ -1,9 +1,18 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.14)
 project(procedural-wallpapers)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 include(ExternalProject)
-find_package(Git REQUIRED)
+
+include (FindPkgConfig)
+if (NOT PKG_CONFIG_FOUND)
+    message (FATAL_ERROR "pkg-config not found")
+endif ()
+
+add_definitions( -DMAGICKCORE_QUANTUM_DEPTH=16 )
+add_definitions( -DMAGICKCORE_HDRI_ENABLE=0 )
+find_package(ImageMagick COMPONENTS Magick++)
+include_directories(${ImageMagick_INCLUDE_DIRS})
 
 ExternalProject_Add(
         cxxopts
@@ -17,6 +26,7 @@ ExternalProject_Add(
         INSTALL_COMMAND ""
         LOG_DOWNLOAD ON
 )
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #add_subdirectory(
@@ -58,6 +68,7 @@ add_custom_target(run_all
 foreach (KIND ${IMAGEKINDS})
     add_executable(${KIND} ${COMMON_SOURCE_FILES} src/${KIND}.cpp)
     target_link_libraries(${KIND} m)
+    target_link_libraries(${KIND} ${ImageMagick_LIBRARIES})
     target_compile_definitions(${KIND} PRIVATE PRGNAME=${KIND})
     add_dependencies(${KIND} cxxopts)
     add_custom_target(run_${KIND}

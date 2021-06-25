@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <ctime>
 #include <cxxopts.hpp>
+#include <Magick++.h>
 
 #include "main.h"
 
@@ -25,18 +26,21 @@ int main(int argc, char *argv[]) {
     std::string fname;
     char has_no_filename = (argc <= 1);
     if (has_no_filename) {
-        fname = TOSTRING(PRGNAME)".ppm";
+        fname = TOSTRING(PRGNAME)".png";
     } else {
         fname = argv[1];
     }
-    FILE *out = fopen(fname.c_str(), "w");
-
-    fprintf(out, "P6\n");
-    fprintf(out, "%d %d\n", WID, HEI);
-    fprintf(out, "255\n");
-
-    fwrite(bytes, 1, WID * HEI * 3, out);
-    fclose(out);
+    Magick::Image image;
+    image.read(WID,HEI,"rgb",Magick::CharPixel,bytes);
+    image.write(fname);
+//    FILE *out = fopen(fname.c_str(), "w");
+//
+//    fprintf(out, "P6\n");
+//    fprintf(out, "%d %d\n", WID, HEI);
+//    fprintf(out, "255\n");
+//
+//    fwrite(bytes, 1, WID * HEI * 3, out);
+//    fclose(out);
     delete[] bytes;
     return 0;
 }
