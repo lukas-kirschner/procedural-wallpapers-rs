@@ -7,7 +7,7 @@
 #include "lib/main.h"
 #include "lib/basicdrawing.h"
 
-#define PNUM ((int) WID*10)
+#define PNUM ((int) WID*10) // TODO REFACTOR!!!
 
 int particles[PNUM][2];
 int step;
@@ -20,19 +20,19 @@ void generate_distribution() {
 void place_charge(int *x, int *y) {
     switch (distribution) {
         case 0:
-            *x = rand() % WID;
+            *x = rand() % bytes->width;
             *y = HEI - (rand() % (rand() % (HEI - 1) + 1)) - 2;
             break;
         case 1:
-            *x = rand() % WID;
+            *x = rand() % bytes->width;
             *y = rand() % (rand() % (HEI - 1) + 1);
             break;
         case 2:
-            *x = WID - (rand() % (rand() % WID + 1)) - 1;
+            *x = bytes->width - (rand() % (rand() % bytes->width + 1)) - 1;
             *y = rand() % (HEI - 1);
             break;
         case 3:
-            *x = rand() % (rand() % WID + 1);
+            *x = rand() % (rand() % bytes->width + 1);
             *y = rand() % (HEI - 1);
             break;
 
@@ -43,7 +43,7 @@ void next_step() {
     int x, y;
     place_charge(&x, &y);
     int nearest;
-    int nearest_d_sq = WID * WID + HEI * HEI;
+    int nearest_d_sq = bytes->width * bytes->width + HEI * HEI;
     int i;
     for (i = 0; i < step; i++) {
         int dist_sq = (particles[i][0] - x) * (particles[i][0] - x)
@@ -69,7 +69,7 @@ void next_step() {
 
 void draw() {
     generate_distribution();
-    particles[0][0] = rand() % WID;
+    particles[0][0] = rand() % bytes->width;
     particles[0][1] = 0;
     int red = rand() % 120;
     int green = rand() % 120;

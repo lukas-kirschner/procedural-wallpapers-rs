@@ -4,13 +4,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 include(ExternalProject)
 
-include (FindPkgConfig)
+include(FindPkgConfig)
 if (NOT PKG_CONFIG_FOUND)
-    message (FATAL_ERROR "pkg-config not found")
+    message(FATAL_ERROR "pkg-config not found")
 endif ()
 
-add_definitions( -DMAGICKCORE_QUANTUM_DEPTH=16 )
-add_definitions( -DMAGICKCORE_HDRI_ENABLE=0 )
+add_definitions(-DMAGICKCORE_QUANTUM_DEPTH=16)
+add_definitions(-DMAGICKCORE_HDRI_ENABLE=0)
 find_package(ImageMagick COMPONENTS Magick++)
 include_directories(${ImageMagick_INCLUDE_DIRS})
 
@@ -61,6 +61,8 @@ set(COMMON_SOURCE_FILES
         src/lib/perlin.h
         src/lib/randomcomplex.cpp
         src/lib/randomcomplex.h
+        src/lib/BytesImage.cpp
+        src/lib/BytesImage.h
         )
 
 add_custom_target(run_all

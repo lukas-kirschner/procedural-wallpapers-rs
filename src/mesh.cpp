@@ -12,7 +12,7 @@
 void draw_complex_point(std::complex<float> z) {
     float re = z.real();
     float im = z.imag();
-    int x = (int) re + WID / 2;
+    int x = (int) re + bytes->width / 2;
     int y = (int) im + HEI / 2;
     draw_point(x, y);
 }

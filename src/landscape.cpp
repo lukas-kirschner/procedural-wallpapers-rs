@@ -49,17 +49,17 @@ void generate_layer(double level, double steepness, uint8_t r, uint8_t g, uint8_
     points = std::make_unique<vec>(2);
     (*points)[0] = level;
     (*points)[1] = level;
-    int iters = (int) (log(WID) / log(2.0)) + 1;
+    int iters = (int) (log(bytes->width) / log(2.0)) + 1;
     for (int i = 0; i < iters; i++) {
         generate_points(steepness);
     }
     for (int i = 0; i < points->size(); i++) {
         int pt = (int) points->at(i);
-        for (int ii = pt; ii < HEI; ii++) {
-            if (ii >= 0) {
-                bytes[(WID * ii + i) * 3] = r;
-                bytes[(WID * ii + i) * 3 + 1] = g;
-                bytes[(WID * ii + i) * 3 + 2] = b;
+        for (int ii = pt; ii < bytes->height; ii++) {
+            if (ii >= 0 && i < bytes->width) {
+                bytes->setR(i, ii, r);
+                bytes->setG(i, ii, g);
+                bytes->setB(i, ii, b);
             }
         }
     }
@@ -67,7 +67,7 @@ void generate_layer(double level, double steepness, uint8_t r, uint8_t g, uint8_
 
 void draw() {
     points = std::make_unique<vec>();
-    memset(bytes, 240, WID * HEI * 3);
+    bytes->memset(240);
     uint8_t r = 128 + (rand() % 128);
     uint8_t g = 128 + (rand() % 128);
     uint8_t b = 128 + (rand() % 128);

@@ -10,14 +10,15 @@
 #include "lib/randomcomplex.h"
 
 void draw() {
-    memset(bytes, 230, WID * HEI * 3);
+    bytes->memset(230);
     fgcolor(150, 150, 150);
     generate_f();
     int x, y;
-    for (x = 0; x < WID; x++) {
-        for (y = 0; y < HEI; y++) {
-            std::complex<float> z = std::complex<float>(x - WID / 2, (y - HEI / 2));
-            z /= ((float) WID) / 1000;
+    for (x = 0; x < bytes->width; x++) {
+        for (y = 0; y < bytes->height; y++) {
+            std::complex<float> z = std::complex<float>((float) ((float) x - (float) bytes->width / 2),
+                                                        (float) ((float) y - (float) bytes->height / 2));
+            z /= ((float) bytes->width) / 1000;
             char re = (char) f(z).real();
             if (re < 0) {
                 draw_point(x, y);

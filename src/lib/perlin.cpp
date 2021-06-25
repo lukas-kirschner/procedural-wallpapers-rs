@@ -10,11 +10,11 @@
 /**
  * Perlin Noise Gradient with values -1 <= x <= 1
  */
-float gradient[WID][HEI][2];
+float gradient[WID][HEI][2]; // TODO This does NOT work with variable Wid and Hei, refactor to Class!
 
 void generate_noise() {
     int x, y;
-    for (x = 0; x < WID; x++) {
+    for (x = 0; x < bytes->width; x++) {
         for (y = 0; y < HEI; y++) {
             int rnd = rand() & 0xFFF;
             gradient[x][y][0] = sin(rnd);

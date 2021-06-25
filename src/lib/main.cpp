@@ -16,31 +16,38 @@
 #define PRGNAME out
 #endif
 
-uint8_t *bytes;
+EightBitImage *bytes;
 
 int main(int argc, char *argv[]) {
-    bytes = new uint8_t[WID * HEI * 3];
-//TODO Seed here
-    srand((unsigned) time(NULL));
+    cxxopts::Options options(TOSTRING(PRGNAME), "Procedural Wallpaper Generator");
+    options.add_options()
+            ("h,height", "Image Height", cxxopts::value<uint32_t>()->default_value(TOSTRING(HEI)))
+            ("w,width", "Image Width", cxxopts::value<uint32_t>()->default_value(TOSTRING(WID)))
+            ("s,random-seed", "Random Seed",
+             cxxopts::value<uint32_t>()->default_value(std::to_string((unsigned) time(NULL))))
+            ("o,out", "Output file", cxxopts::value<std::string>()->default_value(TOSTRING(PRGNAME)".png"))
+            ("v,verbose", "Verbose output", cxxopts::value<bool>()->default_value("false"));
+    auto cli = options.parse(argc, argv);
+    uint32_t const h = cli["height"].as<uint32_t>();
+    uint32_t const w = cli["width"].as<uint32_t>();
+    uint32_t const seed = cli["random-seed"].as<uint32_t>();
+    std::string outfilename = cli["out"].as<std::string>();
+
+    bytes = new EightBitImage(w, h);
+
+    srand(seed);
     draw();
-    std::string fname;
-    char has_no_filename = (argc <= 1);
-    if (has_no_filename) {
-        fname = TOSTRING(PRGNAME)".png";
-    } else {
-        fname = argv[1];
-    }
     Magick::Image image;
-    image.read(WID,HEI,"rgb",Magick::CharPixel,bytes);
-    image.write(fname);
+    image.read(w, h, "rgb", Magick::CharPixel, bytes->getBuffer());
+    image.write(outfilename);
 //    FILE *out = fopen(fname.c_str(), "w");
 //
 //    fprintf(out, "P6\n");
-//    fprintf(out, "%d %d\n", WID, HEI);
+//    fprintf(out, "%d %d\n", bytes->width, HEI);
 //    fprintf(out, "255\n");
 //
-//    fwrite(bytes, 1, WID * HEI * 3, out);
+//    fwrite(bytes, 1, bytes->width * HEI * 3, out);
 //    fclose(out);
-    delete[] bytes;
+    delete bytes;
     return 0;
 }

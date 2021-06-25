@@ -4,18 +4,18 @@
 
 #include "main.h"
 
-char r, g, b;
+uint8_t r, g, b;
 
-void fgcolor(char red, char green, char blue) {
+void fgcolor(uint8_t red, uint8_t green, uint8_t blue) {
     r = red;
     g = green;
     b = blue;
 }
 
 void draw_point(int x, int y) {
-    if (x > 0 && x < WID && y > 0 && y < HEI) {
-        bytes[(WID * y + x) * 3] = r;
-        bytes[(WID * y + x) * 3 + 1] = g;
-        bytes[(WID * y + x) * 3 + 2] = b;
+    if (x > 0 && x < bytes->width && y > 0 && y < HEI) {
+        bytes->setR(x, y, r);
+        bytes->setG(x, y, g);
+        bytes->setB(x, y, b);
     }
 }

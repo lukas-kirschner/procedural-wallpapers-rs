@@ -74,17 +74,17 @@ void scale2x_vert() {
 void draw() {
     init_map();
     int i;
-    while (width < WID && height < HEI) {
+    while (width < bytes->width && height < HEI) {
         scale2x_horiz();
         scale2x_vert();
         next_iter();
     }
     int x, y;
-    for (x = 0; x < WID; x++) {
+    for (x = 0; x < bytes->width; x++) {
         for (y = 0; y < HEI; y++) {
-            bytes[(WID * y + x) * 3] = map[width * y + x] / 2 + 127;
-            bytes[(WID * y + x) * 3 + 1] = map[width * y + x] / 2 + 127;
-            bytes[(WID * y + x) * 3 + 2] = map[width * y + x] / 2 + 127;
+            bytes->setR(x, y, map[width * y + x] / 2 + 127);
+            bytes->setG(x, y, map[width * y + x] / 2 + 127);
+            bytes->setB(x, y, map[width * y + x] / 2 + 127);
         }
     }
 }

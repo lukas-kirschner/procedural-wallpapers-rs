@@ -1,7 +1,7 @@
 //Mutated Barnsley fern
 
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstring>
 
 #include "lib/main.h"
 #include "lib/basicdrawing.h"
@@ -50,11 +50,11 @@ void next_step() {
     }
     brush_x = coeffs[i][0] * brush_x + coeffs[i][1] * brush_y + coeffs[i][4];
     brush_y = coeffs[i][2] * brush_x + coeffs[i][3] * brush_y + coeffs[i][5];
-    draw_point(brush_x * HEI / 13 + WID / 2, -brush_y * HEI / 13 + HEI);
+    draw_point(brush_x * HEI / 13 + bytes->width / 2, -brush_y * HEI / 13 + HEI);
 }
 
 void draw() {
-    memset(bytes, 55, WID * HEI * 3);
+    bytes->memset(55);
     mutate();
     mutate();
     mutate();

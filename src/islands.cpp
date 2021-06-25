@@ -5,18 +5,19 @@
 #include "lib/main.h"
 #include "lib/perlin.h"
 
-#define GRID_MARGINS 10
-#define GRID_SIZE_IN_PX ((((WID > HEI) ? HEI : WID) - 2 * GRID_MARGINS) / 6)
+#define GRID_MARGINS 10//TODO refactor:
+#define GRID_SIZE_IN_PX ((((bytes->width > HEI) ? HEI : bytes->width) - 2 * GRID_MARGINS) / 6)
 
-#define THRESHOLDVAL1 195
-#define THRESHOLDVAL2 190
+uint8_t const THRESHOLDVAL1 = 195;
+uint8_t const THRESHOLDVAL2 = 190;
 
-unsigned char const background_base_color[] = {198, 151, 63};
-unsigned char const border_color[] = {154, 115, 82};
-unsigned char const foreground_base_color[] = {202, 168, 131};
+uint8_t const background_base_color[] = {198, 151, 63};
+uint8_t const border_color[] = {154, 115, 82};
+uint8_t const foreground_base_color[] = {202, 168, 131};
+uint8_t const dashed_grid_color[] = {100, 96, 82};
 
-unsigned char compute_threshold(unsigned char value, unsigned char replacement_1, unsigned char replacement_2,
-                                unsigned char replacement_3) {
+unsigned char compute_threshold(uint8_t value, uint8_t replacement_1, uint8_t replacement_2,
+                                uint8_t replacement_3) {
     if (value > THRESHOLDVAL1) {
         return replacement_1;
     } else {
@@ -30,22 +31,22 @@ unsigned char compute_threshold(unsigned char value, unsigned char replacement_1
 
 void draw_horiz_dashed(int y) {
     int x;
-    for (x = 0; x < WID; x++) {
+    for (x = 0; x < bytes->width; x++) {
         if (x % 20 < 10) {
-            bytes[(WID * y + x) * 3] = 100;
-            bytes[(WID * y + x) * 3 + 1] = 96;
-            bytes[(WID * y + x) * 3 + 2] = 82;
+            bytes->setR(x, y, dashed_grid_color[0]);
+            bytes->setG(x, y, dashed_grid_color[1]);
+            bytes->setB(x, y, dashed_grid_color[2]);
         }
     }
 }
 
 void draw_vert_dashed(int x) {
     int y;
-    for (y = 0; y < HEI; y++) {
+    for (y = 0; y < bytes->height; y++) {
         if (y % 20 < 10) {
-            bytes[(WID * y + x) * 3] = 100;
-            bytes[(WID * y + x) * 3 + 1] = 96;
-            bytes[(WID * y + x) * 3 + 2] = 82;
+            bytes->setR(x, y, dashed_grid_color[0]);
+            bytes->setG(x, y, dashed_grid_color[1]);
+            bytes->setB(x, y, dashed_grid_color[2]);
         }
     }
 }
@@ -53,21 +54,21 @@ void draw_vert_dashed(int x) {
 void draw() {
     generate_noise();
     int x, y;
-    for (x = 0; x < WID; x++) {
+    for (x = 0; x < bytes->width; x++) {
         for (y = 0; y < HEI; y++) {
             unsigned char val = 185 + (char) (fractal(x, y, 0.004, 8) * 70);
-            bytes[(WID * y + x) * 3] = compute_threshold(val, foreground_base_color[0] * val / 255, border_color[0],
-                                                         (background_base_color[0] + val) / 2);
-            bytes[(WID * y + x) * 3 + 1] = compute_threshold(val, foreground_base_color[1] * val / 255, border_color[1],
-                                                             (background_base_color[1] + val) / 2);
-            bytes[(WID * y + x) * 3 + 2] = compute_threshold(val, foreground_base_color[2] * val / 255, border_color[2],
-                                                             (background_base_color[2] + val) / 2);
+            bytes->setR(x, y, compute_threshold(val, foreground_base_color[0] * val / 255, border_color[0],
+                                                (background_base_color[0] + val) / 2));
+            bytes->setG(x, y, compute_threshold(val, foreground_base_color[1] * val / 255, border_color[1],
+                                                (background_base_color[1] + val) / 2));
+            bytes->setB(x, y, compute_threshold(val, foreground_base_color[2] * val / 255, border_color[2],
+                                                (background_base_color[2] + val) / 2));
         }
     }
-    for (int y = GRID_MARGINS; y < HEI; y += GRID_SIZE_IN_PX) {
+    for (int y = GRID_MARGINS; y < bytes->height; y += GRID_SIZE_IN_PX) {
         draw_horiz_dashed(y);
     }
-    for (int x = GRID_MARGINS; x < WID; x += GRID_SIZE_IN_PX) {
+    for (int x = GRID_MARGINS; x < bytes->width; x += GRID_SIZE_IN_PX) {
         draw_vert_dashed(x);
     }
 }
