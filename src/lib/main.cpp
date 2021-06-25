@@ -19,15 +19,22 @@
 EightBitImage *bytes;
 
 int main(int argc, char *argv[]) {
-    cxxopts::Options options(TOSTRING(PRGNAME), "Procedural Wallpaper Generator");
-    options.add_options()
+    cxxopts::Options options(TOSTRING(PRGNAME), TOSTRING(PRGNAME)" - Part of the Procedural Wallpaper Generator");
+    options.add_options("Image dimension")
             ("h,height", "Image Height", cxxopts::value<uint32_t>()->default_value(TOSTRING(DEFAULT_HEIGHT)))
-            ("w,width", "Image Width", cxxopts::value<uint32_t>()->default_value(TOSTRING(DEFAULT_WIDTH)))
+            ("w,width", "Image Width", cxxopts::value<uint32_t>()->default_value(TOSTRING(DEFAULT_WIDTH)));
+    options.add_options()
             ("s,random-seed", "Random Seed",
              cxxopts::value<uint32_t>()->default_value(std::to_string((unsigned) time(nullptr))))
             ("o,out", "Output file", cxxopts::value<std::string>()->default_value(TOSTRING(PRGNAME)".png"))
-            ("v,verbose", "Verbose output", cxxopts::value<bool>()->default_value("false"));
+            ("H,help", "Print a command-line help text");
     auto cli = options.parse(argc, argv);
+
+    if (cli.count("help")) {
+        std::cout << options.help() << std::endl;
+        exit(0);
+    }
+
     uint32_t const h = cli["height"].as<uint32_t>();
     uint32_t const w = cli["width"].as<uint32_t>();
     uint32_t const seed = cli["random-seed"].as<uint32_t>();
