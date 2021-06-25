@@ -4,7 +4,7 @@ stages:
   - generate
 before_script:
   - apt-get update && apt-get upgrade
-  - apt-get install --no-install-recommends libgraphicsmagick1-dev
+  - apt-get install --no-install-recommends libgraphicsmagick1-dev libmagick++-dev
 
 variables:
   GIT_STRATEGY: clone

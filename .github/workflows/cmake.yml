@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: setup-dependencies
-      run: sudo apt-get update && sudo apt-get upgrade && sudo apt-get install --no-install-recommends libgraphicsmagick1-dev
+      run: sudo apt-get update && sudo apt-get upgrade && sudo apt-get install --no-install-recommends libgraphicsmagick1-dev libmagick++-dev
     - name: configure
       run: cmake .
     - name: make
