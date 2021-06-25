@@ -74,7 +74,7 @@ foreach (KIND ${IMAGEKINDS})
     target_compile_definitions(${KIND} PRIVATE PRGNAME=${KIND})
     add_dependencies(${KIND} cxxopts)
     add_custom_target(run_${KIND}
-            COMMAND ${KIND}
+            COMMAND ${KIND} -s 1337
             DEPENDS ${KIND}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
             )

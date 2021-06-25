@@ -14,4 +14,8 @@ jobs:
     - name: configure
       run: cmake .
     - name: make
-      run: cmake --build . --use-stderr
+      run: cmake --use-stderr run_all
+    - uses: actions/upload-artifact@v2
+      with:
+        name: sample-images
+        path: bin/.*\.png
