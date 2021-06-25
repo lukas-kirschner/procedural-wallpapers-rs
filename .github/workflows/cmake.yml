@@ -14,8 +14,8 @@ jobs:
       - name: configure
         run: cmake .
       - name: make
-        run: make run_all
+        run: make thumbnails
       - uses: actions/upload-artifact@v2
         with:
-          name: sample-images
+          name: thumbnails
           path: bin/*.png

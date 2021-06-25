@@ -65,7 +65,7 @@ set(COMMON_SOURCE_FILES
         src/lib/BytesImage.h
         )
 
-add_custom_target(run_all
+add_custom_target(thumbnails
         )
 foreach (KIND ${IMAGEKINDS})
     add_executable(${KIND} ${COMMON_SOURCE_FILES} src/${KIND}.cpp)
@@ -73,10 +73,10 @@ foreach (KIND ${IMAGEKINDS})
     target_link_libraries(${KIND} ${ImageMagick_LIBRARIES})
     target_compile_definitions(${KIND} PRIVATE PRGNAME=${KIND})
     add_dependencies(${KIND} cxxopts)
-    add_custom_target(run_${KIND}
+    add_custom_target(thumbnail_${KIND}
             COMMAND ${KIND} -s 1337
             DEPENDS ${KIND}
             WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
             )
-    add_dependencies(run_all run_${KIND})
+    add_dependencies(thumbnails thumbnail_${KIND})
 endforeach (KIND)

@@ -34,7 +34,7 @@ generate-images:
   stage: generate
   script:
     - cmake .
-    - make run_all
+    - make thumbnails
   artifacts:
     name: 'thumbnails-$CI_COMMIT_REF_SLUG'
     paths:
