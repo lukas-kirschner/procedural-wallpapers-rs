@@ -1,21 +1,21 @@
 name: C/C++ Cmake
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
-    - name: setup-dependencies
-      run: sudo apt-get update && sudo apt-get upgrade && sudo apt-get install --no-install-recommends libgraphicsmagick1-dev libmagick++-dev
-    - name: configure
-      run: cmake .
-    - name: make
-      run: make run_all
-    - uses: actions/upload-artifact@v2
-      with:
-        name: sample-images
-        path: bin/.*\.png
+      - uses: actions/checkout@v1
+      - name: setup-dependencies
+        run: sudo apt-get update && sudo apt-get upgrade && sudo apt-get install --no-install-recommends libgraphicsmagick1-dev libmagick++-dev
+      - name: configure
+        run: cmake .
+      - name: make
+        run: make run_all
+      - uses: actions/upload-artifact@v2
+        with:
+          name: sample-images
+          path: bin/*.png
