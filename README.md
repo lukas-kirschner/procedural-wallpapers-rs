@@ -3,11 +3,25 @@ A collection of wallpaper generators. Forked from [bagyoni](https://github.com/b
 Rewritten in C++.
 
 ## How to use (Linux only)
-1. Install `imagemagick`, `base-devel` and `cmake`
+1. Install `libmagick++-dev`, `base-devel` and `cmake`
 1. Clone this repository
-1. Open lib/main.h for editing and change WID and HEI to the width and height of your screen (pixels).
-1. `cmake TARGET` with TARGET=one of the algorithms found as .c file in `src/`
-1. The compiled program outputs the image given as argument, or `TARGET.ppm` as default if no argument has been given.
+1. Build the project by typing `cmake . && make TARGET` in the project root with TARGET being one of the algorithms found as .c file in `src/`
+1. The compiled program outputs the image given as argument, or `TARGET.png` as default if no argument has been given.
+
+### Command-Line options
+```
+TARGET - Part of the Procedural Wallpaper Generator
+Usage:
+  TARGET [OPTION...]
+
+  -s, --random-seed arg  Random Seed (default: <random>)
+  -o, --out arg          Output file (default: TARGET.png)
+  -H, --help             Print a command-line help text
+
+ Image dimension options:
+  -h, --height arg  Image Height (default: 1080)
+  -w, --width arg   Image Width (default: 1920)
+```
 
 ## Generators
 
@@ -95,4 +109,4 @@ Rewritten in C++.
 * The *fern* generator uses a fractal image compression method that might be patented (I couldn't find much information about it)
 
 ## Licensing
-All programs, except for those listed in the Disclaimers section, are in the public domain. Feel free to use them as you like.
+All programs, except for those listed in the Disclaimers section or in their respective source file, are in the public domain. Feel free to use them as you like.
