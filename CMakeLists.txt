@@ -50,6 +50,7 @@ set(IMAGEKINDS
         wood
         zebra
         pixelstars
+        nearestpoint
         )
 
 set(COMMON_SOURCE_FILES
