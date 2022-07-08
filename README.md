@@ -1,8 +1,9 @@
 # procedural-wallpapers
-A collection of wallpaper generators. Forked from [bagyoni](https://github.com/bagyoni/procedural-wallpapers).
-Rewritten in C++.
+A collection of wallpaper generators.
+Based on a fork of [bagyoni](https://github.com/bagyoni/procedural-wallpapers)s procedural wallpapers project.
+Rewritten in Rust.
 
-## How to use (Linux only)
+## How to use (Linux only) TODO
 1. Install `libmagick++-dev`, `base-devel` and `cmake`
 1. Clone this repository
 1. Build the project by typing `cmake . && make TARGET` in the project root with TARGET being one of the algorithms found as .c file in `src/`

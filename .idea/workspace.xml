@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithms/clouds.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithms/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/lukas.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/procedural-wallpapers.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/clouds.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/fern.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/flow.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/islands.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/landscape.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/lightning.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/marrowlike.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/mesh.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/tangles.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/water.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/wood.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/zebra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/clouds.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fern.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/islands.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/landscape.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/BytesImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/BytesImage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/basicdrawing.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/basicdrawing.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/main.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/perlin.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/perlin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/randomcomplex.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/randomcomplex.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lightning.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/marrowlike.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mesh.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nearestpoint.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pixelstars.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tangles.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/water.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wood.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/zebra.cpp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="3x98el6c" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BeTGvrPhFtUPmN1u6en4gf41Rf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/home/lukas/workspace/procedural-wallpapers-rs",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true"
+  }
+}]]></component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="/usr/bin" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="" />
+      <created>1657265458309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657265458309</updated>
+      <workItem from="1657265459503" duration="166000" />
+      <workItem from="1657265647338" duration="4857000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

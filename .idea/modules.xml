@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/procedural-wallpapers.iml" filepath="$PROJECT_DIR$/.idea/procedural-wallpapers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/procedural-wallpapers-rs.iml" filepath="$PROJECT_DIR$/.idea/procedural-wallpapers-rs.iml" />
     </modules>
   </component>
 </project>
