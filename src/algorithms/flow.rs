@@ -64,13 +64,12 @@ impl Algorithm for Flow {
         for i in 0..self.num_particles {
             self.make_single_path(&perlin, &mut flow, img).unwrap();
         }
-        let max: &f64 = &(flow.iter()
-            .map(|f| f
-                .iter()
-                .fold(f64::NEG_INFINITY, |prev, curr| prev.max(*curr))))
-            .fold(f64::NEG_INFINITY, |prev, curr| prev.max(curr));
+        let max: f64 = flow
+            .iter()
+            .flatten()
+            .fold(f64::NEG_INFINITY, |prev, curr| prev.max(*curr));
         for (x, y, pixel) in img.enumerate_pixels_mut() {
-            let val: u8 = (256.0 + (self.signum() as f64) * (55.0 + 200.0 * flow[x as usize][y as usize] / *max)) as u8;
+            let val: u8 = (256.0 + (self.signum() as f64) * (55.0 + 200.0 * flow[x as usize][y as usize] / max)) as u8;
             *pixel = Rgb([val, val, val]);
         }
         Ok(())
