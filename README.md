@@ -41,21 +41,21 @@ All the example images shown below were generated with a size of `400`x`400` pix
 		<p>Perlin noise fed into a sigmoid function.
 	</td>
 	<td width="50%">
-		<p>REMOVED due to licensing issues</p>
-		<b>Fern</b>
-		<p>Barnsley fern with mutation.
-	</td>
-</tr>
-<tr>
-	<td width="50%">
 		<img src="examples/flow.png">
 		<b>Flow</b>
 		<p>Perlin flow field.
 	</td>
+</tr>
+<tr>
 	<td width="50%">
 		<img src="examples/islands.png">
 		<b>Islands</b>
 		<p>Perlin noise fed into a cutoff function.
+	</td>
+    <td width="50%">
+		<p>REMOVED due to licensing issues</p>
+		<b>Fern</b>
+		<p>Barnsley fern with mutation.
 	</td>
 </tr>
 <tr>

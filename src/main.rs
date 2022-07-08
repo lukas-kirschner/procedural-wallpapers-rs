@@ -14,6 +14,7 @@ mod utils;
 enum Mode {
     CLOUDS,
     FLOW,
+    ISLANDS,
 }
 
 impl FromStr for Mode {
@@ -22,6 +23,8 @@ impl FromStr for Mode {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s.to_ascii_lowercase().as_str() {
             "clouds" => Ok(Mode::CLOUDS),
+            "flow" => Ok(Mode::FLOW),
+            "islands" => Ok(Mode::ISLANDS),
             _ => Err(format!("Invalid Mode: {}", s))
         }
     }
