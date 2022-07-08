@@ -2,11 +2,13 @@ use image::{RgbImage};
 use crate::algorithms::clouds::Clouds;
 use crate::algorithms::flow::Flow;
 use crate::algorithms::islands::Islands;
+use crate::algorithms::lightning::Lightning;
 use crate::Mode;
 
 mod clouds;
 mod flow;
 mod islands;
+mod lightning;
 
 /// This module contains all the image generation algorithms.
 
@@ -21,6 +23,7 @@ impl Mode {
             Mode::CLOUDS => { Box::new(Clouds {}) }
             Mode::FLOW => { Box::new(Flow::default()) }
             Mode::ISLANDS => { Box::new(Islands::default()) }
+            Mode::LIGHTNING => {Box::new(Lightning::default())}
         }
     }
 }

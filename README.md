@@ -52,10 +52,10 @@ All the example images shown below were generated with a size of `400`x`400` pix
 		<b>Islands</b>
 		<p>Perlin noise fed into a cutoff function.
 	</td>
-    <td width="50%">
-		<p>REMOVED due to licensing issues</p>
-		<b>Fern</b>
-		<p>Barnsley fern with mutation.
+	<td width="50%">
+		<img src="examples/lightning.png">
+		<b>Lightning</b>
+		<p>Similar to a Brownian tree but faster to generate.
 	</td>
 </tr>
 <tr>
@@ -65,11 +65,10 @@ All the example images shown below were generated with a size of `400`x`400` pix
 		<p>Simulated erosion using a midpoint displacement technique.
 	</td>
 	<td width="50%">
-		<img src="examples/lightning.png">
-		<b>Lightning</b>
-		<p>Similar to a Brownian tree but faster to generate.
+		<p>REMOVED due to licensing issues</p>
+		<b>Fern</b>
+		<p>Barnsley fern with mutation.
 	</td>
-	
 </tr>
 <tr>
 	<td width="50%">
