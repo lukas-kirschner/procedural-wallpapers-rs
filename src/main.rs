@@ -13,6 +13,7 @@ mod utils;
 #[derive(Debug, Copy, Clone, PartialEq, ArgEnum)]
 enum Mode {
     CLOUDS,
+    FLOW,
 }
 
 impl FromStr for Mode {
@@ -50,7 +51,7 @@ struct Args {
 fn main() {
     let args = Args::parse();
     let mut img: RgbImage = ImageBuffer::new(args.width, args.height);
-    let algorithm: Box<dyn Algorithm> = args.mode.to_algorithm();
+    let mut algorithm: Box<dyn Algorithm> = args.mode.to_algorithm();
     algorithm.build(img.borrow_mut()).unwrap();
     img.save(args.output).unwrap();
     println!("Hello, world! The mode is {:?}", args.mode);

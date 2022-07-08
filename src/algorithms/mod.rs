@@ -1,20 +1,23 @@
 use image::{RgbImage};
 use crate::algorithms::clouds::Clouds;
+use crate::algorithms::flow::Flow;
 use crate::Mode;
 
 mod clouds;
+mod flow;
 
 /// This module contains all the image generation algorithms.
 
 pub trait Algorithm {
     /// Build an image using this algorithm
-    fn build(&self, img: &mut RgbImage) -> Result<(), String>;
+    fn build(&mut self, img: &mut RgbImage) -> Result<(), String>;
 }
 
 impl Mode {
     pub fn to_algorithm(&self) -> Box<dyn Algorithm> {
         match self {
             Mode::CLOUDS => { Box::new(Clouds {}) }
+            Mode::FLOW => { Box::new(Flow::default()) }
         }
     }
 }

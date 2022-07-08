@@ -10,7 +10,7 @@ fn sigmoid(x: f64) -> f64 {
 pub struct Clouds {}
 
 impl Algorithm for Clouds {
-    fn build(&self, img: &mut RgbImage) -> Result<(), String> {
+    fn build(&mut self, img: &mut RgbImage) -> Result<(), String> {
         let mut perlin = Perlin::new(img.width() as usize, img.height() as usize);
         perlin.regenerate_noise();
         let mut rng = rand::thread_rng();

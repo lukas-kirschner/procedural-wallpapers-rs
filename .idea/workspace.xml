@@ -10,12 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/perlin.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithms/flow.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/clouds.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/fern.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/flow.jpg" beforeDir="false" />
@@ -29,6 +28,7 @@
       <change beforePath="$PROJECT_DIR$/examples/wood.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/zebra.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/clouds.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/clouds.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/clouds.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fern.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/flow.cpp" beforeDir="false" />
@@ -110,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1657265458309</updated>
       <workItem from="1657265459503" duration="166000" />
-      <workItem from="1657265647338" duration="8476000" />
+      <workItem from="1657265647338" duration="14000000" />
     </task>
     <servers />
   </component>
