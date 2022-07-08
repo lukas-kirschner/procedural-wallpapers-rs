@@ -8,6 +8,7 @@ use image::{ImageBuffer, RgbImage};
 use crate::algorithms::Algorithm;
 
 mod algorithms;
+mod utils;
 
 #[derive(Debug, Copy, Clone, PartialEq, ArgEnum)]
 enum Mode {
