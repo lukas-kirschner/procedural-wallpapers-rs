@@ -60,21 +60,9 @@ All the example images shown below were generated with a size of `400`x`400` pix
 </tr>
 <tr>
 	<td width="50%">
-				<p>REMOVED due to licensing issues</p>
-		<b>Landscape</b> (<a href="https://tyrellrummage.github.io/landscape/">original source</a>)
-		<p>Simulated erosion using a midpoint displacement technique.
-	</td>
-	<td width="50%">
-		<p>REMOVED due to licensing issues</p>
-		<b>Fern</b>
-		<p>Barnsley fern with mutation.
-	</td>
-</tr>
-<tr>
-	<td width="50%">
-				<p>REMOVED due to licensing issues</p>
-		<b>Marrowlike</b> (<a href="http://pcg.wikidot.com/forum/t-79282/multiplicative-cascades-ish">original source</a>)
-		<p>If a pixel is too dark, give it a random brightness. Scale to double size. Repeat.
+		<img src="examples/nearest-point.png">
+		<b>Nearest-Point</b>
+		<p>Each Pixel gets the color of its nearest point neighbor.
 	</td>
 	<td width="50%">
 		<img src="examples/mesh.png">

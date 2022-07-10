@@ -16,6 +16,7 @@ enum Mode {
     FLOW,
     ISLANDS,
     LIGHTNING,
+    NEAREST_POINT,
 }
 
 impl FromStr for Mode {
@@ -27,6 +28,7 @@ impl FromStr for Mode {
             "flow" => Ok(Mode::FLOW),
             "islands" => Ok(Mode::ISLANDS),
             "lightning" => Ok(Mode::LIGHTNING),
+            "nearest_point" => Ok(Mode::NEAREST_POINT),
             _ => Err(format!("Invalid Mode: {}", s))
         }
     }

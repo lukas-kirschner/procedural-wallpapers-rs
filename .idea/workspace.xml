@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/algorithms/lightning.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithms/nearestpoint.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/clouds.jpg" beforeDir="false" />
@@ -109,7 +109,8 @@
       <updated>1657265458309</updated>
       <workItem from="1657265459503" duration="166000" />
       <workItem from="1657265647338" duration="17263000" />
-      <workItem from="1657284165579" duration="3083000" />
+      <workItem from="1657284165579" duration="5317000" />
+      <workItem from="1657456937260" duration="2091000" />
     </task>
     <servers />
   </component>
