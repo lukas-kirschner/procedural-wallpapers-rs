@@ -1,4 +1,5 @@
 use image::{Rgb, RgbImage};
+use rand::Rng;
 use crate::Algorithm;
 use crate::utils::perlin::Perlin;
 
@@ -42,7 +43,7 @@ impl Islands {
     fn draw_horiz_dashed(&self, img: &mut RgbImage, y: usize) {
         for x in 0..img.width() {
             if x % 20 < 10 {
-                let mut pixel = img.get_pixel_mut(x, y as u32);
+                let pixel = img.get_pixel_mut(x, y as u32);
                 *pixel = Rgb(self.dashed_grid_color);
             }
         }
@@ -50,15 +51,15 @@ impl Islands {
     fn draw_vert_dashed(&self, img: &mut RgbImage, x: usize) {
         for y in 0..img.height() {
             if y % 20 < 10 {
-                let mut pixel = img.get_pixel_mut(x as u32, y);
+                let pixel = img.get_pixel_mut(x as u32, y);
                 *pixel = Rgb(self.dashed_grid_color);
             }
         }
     }
 }
 
-impl Algorithm for Islands {
-    fn build(&mut self, img: &mut RgbImage) -> Result<(), String> {
+impl<R:Rng> Algorithm<R> for Islands {
+    fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
         // Six grid squares for the longer dimension of the image
         let grid_size_in_px: usize = ((if img.width() > img.height() {
             img.height()
@@ -66,7 +67,7 @@ impl Algorithm for Islands {
             img.width()
         } as f64 - (2.0 * self.grid_margins as f64)) / 6.0) as usize;
         let mut perlin = Perlin::new(img.width() as usize, img.height() as usize);
-        perlin.regenerate_noise();
+        perlin.regenerate_noise(rng);
         for (x, y, pixel) in img.enumerate_pixels_mut() {
             let val: u8 = (185.0 + perlin.fractal(x as f64, y as f64, 0.004, 8)? * 70.0) as u8;
             *pixel = Rgb([

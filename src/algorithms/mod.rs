@@ -1,9 +1,11 @@
 use image::{RgbImage};
+use rand::Rng;
 use crate::algorithms::clouds::Clouds;
 use crate::algorithms::flow::Flow;
 use crate::algorithms::islands::Islands;
 use crate::algorithms::lightning::Lightning;
 use crate::algorithms::nearestpoint::NearestPoint;
+use crate::algorithms::tangles::Tangles;
 use crate::Mode;
 
 mod clouds;
@@ -11,22 +13,24 @@ mod flow;
 mod islands;
 mod lightning;
 mod nearestpoint;
+mod tangles;
 
 /// This module contains all the image generation algorithms.
 
-pub trait Algorithm {
+pub trait Algorithm<R: Rng> {
     /// Build an image using this algorithm
-    fn build(&mut self, img: &mut RgbImage) -> Result<(), String>;
+    fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String>;
 }
 
 impl Mode {
-    pub fn to_algorithm(&self) -> Box<dyn Algorithm> {
+    pub fn to_algorithm<R: Rng>(&self) -> Box<dyn Algorithm<R>> {
         match self {
             Mode::CLOUDS => { Box::new(Clouds {}) }
             Mode::FLOW => { Box::new(Flow::default()) }
             Mode::ISLANDS => { Box::new(Islands::default()) }
-            Mode::LIGHTNING => {Box::new(Lightning::default())}
-            Mode::NEAREST_POINT => {Box::new(NearestPoint::default())}
+            Mode::LIGHTNING => { Box::new(Lightning::default()) }
+            Mode::NEARESTPOINT => { Box::new(NearestPoint::default()) }
+            Mode::TANGLES => { Box::new(Tangles::default()) }
         }
     }
 }

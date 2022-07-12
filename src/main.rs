@@ -6,6 +6,8 @@ use clap::ArgEnum;
 use clap::ValueHint;
 use image::{ImageBuffer, RgbImage};
 use crate::algorithms::Algorithm;
+use rand_chacha::ChaCha8Rng;
+use rand_chacha::rand_core::SeedableRng;
 
 mod algorithms;
 mod utils;
@@ -16,7 +18,8 @@ enum Mode {
     FLOW,
     ISLANDS,
     LIGHTNING,
-    NEAREST_POINT,
+    NEARESTPOINT,
+    TANGLES,
 }
 
 impl FromStr for Mode {
@@ -28,7 +31,8 @@ impl FromStr for Mode {
             "flow" => Ok(Mode::FLOW),
             "islands" => Ok(Mode::ISLANDS),
             "lightning" => Ok(Mode::LIGHTNING),
-            "nearest_point" => Ok(Mode::NEAREST_POINT),
+            "nearest-point" => Ok(Mode::NEARESTPOINT),
+            "tangles" => Ok(Mode::TANGLES),
             _ => Err(format!("Invalid Mode: {}", s))
         }
     }
@@ -58,8 +62,13 @@ struct Args {
 fn main() {
     let args = Args::parse();
     let mut img: RgbImage = ImageBuffer::new(args.width, args.height);
-    let mut algorithm: Box<dyn Algorithm> = args.mode.to_algorithm();
-    algorithm.build(img.borrow_mut()).unwrap();
+    let mut algorithm: Box<dyn Algorithm<ChaCha8Rng>> = args.mode.to_algorithm::<ChaCha8Rng>();
+    let mut rng = if args.seed != 0 {
+        ChaCha8Rng::seed_from_u64(args.seed as u64)
+    } else {
+        ChaCha8Rng::from_entropy()
+    };
+    algorithm.build(&mut rng, img.borrow_mut()).unwrap();
     img.save(args.output).unwrap();
     println!("Hello, world! The mode is {:?}", args.mode);
 }

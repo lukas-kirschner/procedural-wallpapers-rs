@@ -31,8 +31,7 @@ impl Perlin {
         x * (1.0 - yweight) + y * yweight
     }
     /// Regenerate the noise
-    pub fn regenerate_noise(&mut self) {
-        let mut rng = rand::thread_rng();
+    pub fn regenerate_noise(&mut self, rng: &mut impl Rng) {
         for x in 0..self.width {
             for y in 0..self.height {
                 let val: f64 = (rng.gen::<u32>() & 0xfff) as f64;
@@ -43,10 +42,10 @@ impl Perlin {
     }
     /// Get the value of the perlin noise at the given coordinate
     pub fn perlin(&self, x: f64, y: f64) -> Result<f64, String> {
-        let d1: f64 = self.distance_along_gradient(x, y, (x as usize), (y as usize))?;
-        let d2: f64 = self.distance_along_gradient(x, y, (x as usize) + 1, (y as usize))?;
-        let d3: f64 = self.distance_along_gradient(x, y, (x as usize), (y as usize) + 1)?;
-        let d4: f64 = self.distance_along_gradient(x, y, (x as usize) + 1, (y as usize) + 1)?;
+        let d1: f64 = self.distance_along_gradient(x, y, x as usize, y as usize)?;
+        let d2: f64 = self.distance_along_gradient(x, y, x as usize + 1, y as usize)?;
+        let d3: f64 = self.distance_along_gradient(x, y, x as usize, (y as usize) + 1)?;
+        let d4: f64 = self.distance_along_gradient(x, y, x as usize + 1, (y as usize) + 1)?;
         let i1: f64 = Perlin::inter(d1, d2, x - x.floor());
         let i2: f64 = Perlin::inter(d3, d4, x - x.floor());
         Ok(Perlin::inter(i1, i2, y - y.floor()))
@@ -55,7 +54,7 @@ impl Perlin {
     pub fn fractal(&self, x: f64, y: f64, freq: f64, depth: u32) -> Result<f64, String> {
         match depth {
             0 => Ok(0.0),
-            d => Ok(self.perlin(x * freq, y * freq)? + self.fractal(x, y, freq * 2.0, depth - 1)? / 2.0)
+            d => Ok(self.perlin(x * freq, y * freq)? + self.fractal(x, y, freq * 2.0, d - 1)? / 2.0)
         }
     }
 }

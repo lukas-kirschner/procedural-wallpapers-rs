@@ -52,8 +52,7 @@ impl Default for NearestPoint {
 }
 
 impl NearestPoint {
-    fn populate_points(&mut self, num_points: usize, img: &RgbImage) {
-        let mut rng = rand::thread_rng();
+    fn populate_points(&mut self, rng: &mut impl Rng, num_points: usize, img: &RgbImage) {
         for _ in 0..num_points {
             self.points.insert(Point {
                 x: rng.gen_range(0..img.width()),
@@ -76,10 +75,10 @@ impl NearestPoint {
     }
 }
 
-impl Algorithm for NearestPoint {
-    fn build(&mut self, img: &mut RgbImage) -> Result<(), String> {
+impl<R: Rng> Algorithm<R> for NearestPoint {
+    fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
         let num_points = max(2, img.width() * img.height() / 20000);
-        self.populate_points(num_points.try_into().expect(format!("There were too many points for this algorithm to handle: {}", num_points).as_str()), img);
+        self.populate_points(rng, num_points.try_into().expect(format!("There were too many points for this algorithm to handle: {}", num_points).as_str()), img);
         self.color_image(img);
         Ok(())
     }

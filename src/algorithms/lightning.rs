@@ -22,13 +22,11 @@ impl Default for Lightning {
 }
 
 impl Lightning {
-    fn generate_distribution(&mut self) {
-        let mut rng = rand::thread_rng();
+    fn generate_distribution(&mut self, rng: &mut impl Rng) {
         self.distribution = rng.gen_range(0..=3);
     }
 
-    fn place_charge(&self, img: &RgbImage) -> (u32, u32) {
-        let mut rng = rand::thread_rng();
+    fn place_charge(&self, rng: &mut impl Rng, img: &RgbImage) -> (u32, u32) {
         let ran1 = rng.gen_range(2..img.height() - 1);
         let ran2 = rng.gen_range(1..=img.width());
         match self.distribution {
@@ -52,8 +50,8 @@ impl Lightning {
             _ => panic!("Illegal distribution: {}", self.distribution)
         }
     }
-    fn next_step(&mut self, img: &mut RgbImage, particles: &mut Vec<(u32, u32)>) {
-        let (x, y) = self.place_charge(img);
+    fn next_step(&mut self, rng: &mut impl Rng, img: &mut RgbImage, particles: &mut Vec<(u32, u32)>) {
+        let (x, y) = self.place_charge(rng, img);
         let mut nearest: Option<u32> = None;
         let mut nearest_d_sq = img.width().pow(2) + img.height().pow(2);
         for i in 0..self.step {
@@ -78,26 +76,25 @@ impl Lightning {
     }
 }
 
-impl Algorithm for Lightning {
-    fn build(&mut self, img: &mut RgbImage) -> Result<(), String> {
-        let mut rng = rand::thread_rng();
+impl<R: Rng> Algorithm<R> for Lightning {
+    fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
         let pnum = img.width() * 10;
         let mut particles: Vec<(u32, u32)> = vec![(0, 0); pnum as usize];
-        self.generate_distribution();
+        self.generate_distribution(rng);
         particles[0] = (rng.gen_range(0..(img.width() as usize)) as u32, 0);
         let red: u8 = rng.gen_range(0..120);
         let green: u8 = rng.gen_range(0..120);
         self.step = 1;
         while self.step < pnum {
             if (self.step % 2000) == 0 {
-                self.generate_distribution();
+                self.generate_distribution(rng);
             }
             self.fg_color = [
                 (red as u32 + (200 - red) as u32 * (pnum - self.step) / pnum) as u8,
                 (green as u32 + (200 - green) as u32 * (pnum - self.step) / pnum) as u8,
                 255
             ];
-            self.next_step(img, &mut particles);
+            self.next_step(rng, img, &mut particles);
         }
         Ok(())
     }
