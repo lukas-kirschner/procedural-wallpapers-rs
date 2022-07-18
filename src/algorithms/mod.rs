@@ -1,5 +1,6 @@
 use image::{RgbImage};
 use rand::Rng;
+use crate::algorithms::cellularone::CellularOne;
 use crate::algorithms::clouds::Clouds;
 use crate::algorithms::flow::Flow;
 use crate::algorithms::islands::Islands;
@@ -14,6 +15,7 @@ mod islands;
 mod lightning;
 mod nearestpoint;
 mod tangles;
+mod cellularone;
 
 /// This module contains all the image generation algorithms.
 
@@ -31,6 +33,7 @@ impl Mode {
             Mode::LIGHTNING => { Box::new(Lightning::default()) }
             Mode::NEARESTPOINT => { Box::new(NearestPoint::default()) }
             Mode::TANGLES => { Box::new(Tangles::default()) }
+            Mode::CELLULARONE => { Box::new(CellularOne::default()) }
         }
     }
 }
