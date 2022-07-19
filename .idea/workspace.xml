@@ -9,13 +9,13 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Squares">
-      <change afterPath="$PROJECT_DIR$/src/layers/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layers/squareslayer.rs" afterDir="false" />
+    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Commented out unused functions">
+      <change afterPath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/nearestpoint.png" beforeDir="false" afterPath="$PROJECT_DIR$/examples/nearestpoint.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/squares.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/squares.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,12 +56,17 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lukas/workspace/procedural-wallpapers-rs&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lukas/workspace/procedural-wallpapers-rs/src/algorithms&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/algorithms" />
+    </key>
+  </component>
   <component name="RunManager" selected="Cargo.Cargo Run">
     <configuration name="Run Lightning" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value=" run -- --mode lightning --width 400 --height 400 --seed 1234 -o /tmp/lightning.png" />
@@ -107,7 +112,8 @@
       <workItem from="1658070538897" duration="5358000" />
       <workItem from="1658166519717" duration="85000" />
       <workItem from="1658222090700" duration="4737000" />
-      <workItem from="1658237209559" duration="2882000" />
+      <workItem from="1658237209559" duration="4465000" />
+      <workItem from="1658242004402" duration="450000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Licensing Information from Readme">
       <created>1657630156537</created>
@@ -130,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658226037185</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Abstracted Squares into own struct for re-use later">
+      <created>1658240115766</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658240115766</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Commented out unused functions">
+      <created>1658240179895</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658240179895</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +174,8 @@
     <MESSAGE value="Removed Licensing Information from Readme" />
     <MESSAGE value="Implemented Cellular One" />
     <MESSAGE value="Implemented Squares" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Squares" />
+    <MESSAGE value="Abstracted Squares into own struct for re-use later" />
+    <MESSAGE value="Commented out unused functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commented out unused functions" />
   </component>
 </project>
