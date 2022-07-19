@@ -11,6 +11,7 @@ use rand_chacha::rand_core::SeedableRng;
 
 mod algorithms;
 mod utils;
+mod layers;
 
 #[derive(Debug, Copy, Clone, PartialEq, ArgEnum)]
 enum Mode {
