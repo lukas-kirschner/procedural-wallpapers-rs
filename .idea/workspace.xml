@@ -9,9 +9,8 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Removed Licensing Information from Readme">
-      <change afterPath="$PROJECT_DIR$/src/algorithms/cellularone.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Cellular One">
+      <change afterPath="$PROJECT_DIR$/src/algorithms/squares.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
@@ -49,20 +48,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/home/lukas/workspace/procedural-wallpapers-rs",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lukas/workspace/procedural-wallpapers-rs&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="/usr/bin" />
     <option name="version" value="2" />
@@ -80,7 +79,9 @@
       <workItem from="1657284165579" duration="5317000" />
       <workItem from="1657456937260" duration="6830000" />
       <workItem from="1657627452146" duration="2908000" />
-      <workItem from="1658070538897" duration="5260000" />
+      <workItem from="1658070538897" duration="5358000" />
+      <workItem from="1658166519717" duration="85000" />
+      <workItem from="1658222090700" duration="3914000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Licensing Information from Readme">
       <created>1657630156537</created>
@@ -89,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657630156537</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implemented Cellular One">
+      <created>1658131943348</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658131943348</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +119,7 @@
       <path value="$PROJECT_DIR$/old-src/cxxopts" />
     </ignored-roots>
     <MESSAGE value="Removed Licensing Information from Readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Licensing Information from Readme" />
+    <MESSAGE value="Implemented Cellular One" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Cellular One" />
   </component>
 </project>

@@ -6,6 +6,7 @@ use crate::algorithms::flow::Flow;
 use crate::algorithms::islands::Islands;
 use crate::algorithms::lightning::Lightning;
 use crate::algorithms::nearestpoint::NearestPoint;
+use crate::algorithms::squares::Squares;
 use crate::algorithms::tangles::Tangles;
 use crate::Mode;
 
@@ -16,6 +17,7 @@ mod lightning;
 mod nearestpoint;
 mod tangles;
 mod cellularone;
+mod squares;
 
 /// This module contains all the image generation algorithms.
 
@@ -34,6 +36,7 @@ impl Mode {
             Mode::NEARESTPOINT => { Box::new(NearestPoint::default()) }
             Mode::TANGLES => { Box::new(Tangles::default()) }
             Mode::CELLULARONE => { Box::new(CellularOne::default()) }
+            Mode::SQUARES => { Box::new(Squares::default()) }
         }
     }
 }

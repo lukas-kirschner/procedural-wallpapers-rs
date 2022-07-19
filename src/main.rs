@@ -21,6 +21,7 @@ enum Mode {
     NEARESTPOINT,
     TANGLES,
     CELLULARONE,
+    SQUARES,
 }
 
 impl FromStr for Mode {
@@ -35,6 +36,7 @@ impl FromStr for Mode {
             "nearest-point" => Ok(Mode::NEARESTPOINT),
             "tangles" => Ok(Mode::TANGLES),
             "cellularone" => Ok(Mode::CELLULARONE),
+            "squares" => Ok(Mode::SQUARES),
             _ => Err(format!("Invalid Mode: {}", s))
         }
     }
