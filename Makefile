@@ -1,4 +1,4 @@
-MODES := clouds flow islands lightning nearestpoint tangles cellularone squares squareshor squaresver squaresdiag
+MODES := clouds flow islands lightning nearestpoint tangles cellularone squares squareshor squaresver squaresdiag squares2
 
 export RUST_BACKTRACE=full
 

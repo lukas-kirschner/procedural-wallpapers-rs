@@ -24,6 +24,7 @@ pub struct SquaresOneDirection {
     visited_squares: Vec<Vec<bool>>,
     direction: Direction,
     weight: usize,
+    additional_random_points: usize,
 }
 
 impl SquaresOneDirection {
@@ -34,6 +35,7 @@ impl SquaresOneDirection {
             visited_squares: vec![],
             direction: Direction::HORIZONTAL,
             weight: 6,
+            additional_random_points: 0,
         }
     }
     pub fn new_vert() -> Self {
@@ -43,6 +45,7 @@ impl SquaresOneDirection {
             visited_squares: vec![],
             direction: Direction::VERTICAL,
             weight: 4,
+            additional_random_points: 0,
         }
     }
     pub fn new_diag() -> Self {
@@ -52,6 +55,7 @@ impl SquaresOneDirection {
             visited_squares: vec![],
             direction: Direction::DIAGONAL,
             weight: 4,
+            additional_random_points: 0,
         }
     }
     pub fn new_nodir() -> Self {
@@ -61,11 +65,36 @@ impl SquaresOneDirection {
             visited_squares: vec![],
             direction: Direction::NONE,
             weight: 0,
+            additional_random_points: 0,
+        }
+    }
+    pub fn new_nodir_randomized() -> Self {
+        SquaresOneDirection {
+            squares: SquaresLayer::new(0, 0, 10, 10),
+            variation_amount: 20,
+            visited_squares: vec![],
+            direction: Direction::NONE,
+            weight: 0,
+            additional_random_points: 32,
         }
     }
 }
 
 impl SquaresOneDirection {
+    /// Create the initial additional random population of points
+    fn populate_points(&mut self, rng: &mut impl Rng) {
+        for _ in 0..self.additional_random_points {
+            let x = rng.gen_range(0..self.squares.squares_h());
+            let y = rng.gen_range(0..self.squares.squares_v());
+            let color: [u8; 3] = [
+                rng.gen_range(0..255),
+                rng.gen_range(0..255),
+                rng.gen_range(0..255),
+            ];
+            self.squares.set_color_at(x, y, color);
+            self.visited_squares[x][y] = true;
+        }
+    }
     /// Gets the square color at the given location, or returns None, if the square has not yet been visited
     fn get_square_color(&self, square_x: usize, square_y: usize) -> Option<&[u8; 3]> {
         if self.visited_squares[square_x][square_y] {
@@ -156,6 +185,9 @@ impl<R: Rng> Algorithm<R> for SquaresOneDirection {
     fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
         self.squares.adjust_square_count_to_image_dimensions(img.width() as usize, img.height() as usize);
         self.visited_squares = vec![vec![false; self.squares.squares_v()]; self.squares.squares_h()];
+        // n points per 1000x1000 pixels
+        self.additional_random_points = (self.additional_random_points as f64 * (img.width() as f64 * img.height() as f64) / (1000.0 * 1000.0)) as usize;
+        self.populate_points(rng);
 
         for x in 0..self.squares.squares_h() {
             for y in 0..self.squares.squares_v() {
