@@ -30,12 +30,12 @@ impl<Color: Default + Clone> SquaresLayer<Color> {
 
 // Getters
 impl<Color: Default + Clone> SquaresLayer<Color> {
-    pub fn squaresize_h(&self) -> usize {
-        self.squaresize_h
-    }
-    pub fn squaresize_v(&self) -> usize {
-        self.squaresize_v
-    }
+    // pub fn squaresize_h(&self) -> usize {
+    //     self.squaresize_h
+    // }
+    // pub fn squaresize_v(&self) -> usize {
+    //     self.squaresize_v
+    // }
     pub fn squares_v(&self) -> usize {
         self.squares_v
     }
@@ -49,16 +49,16 @@ impl<Color: Default + Clone> SquaresLayer<Color> {
 
 // Setters
 impl<Color: Default + Clone> SquaresLayer<Color> {
-    /// Set the new horizontal square size and return the newly-set value
-    pub fn set_squaresize_h(&mut self, new_squaresize_h: usize) -> usize {
-        self.squaresize_h = new_squaresize_h;
-        self.squaresize_h
-    }
-    /// Set the new vertical square size and return the newly-set value
-    pub fn set_squaresize_v(&mut self, new_squaresize_v: usize) -> usize {
-        self.squaresize_v = new_squaresize_v;
-        self.squaresize_v
-    }
+    // /// Set the new horizontal square size and return the newly-set value
+    // pub fn set_squaresize_h(&mut self, new_squaresize_h: usize) -> usize {
+    //     self.squaresize_h = new_squaresize_h;
+    //     self.squaresize_h
+    // }
+    // /// Set the new vertical square size and return the newly-set value
+    // pub fn set_squaresize_v(&mut self, new_squaresize_v: usize) -> usize {
+    //     self.squaresize_v = new_squaresize_v;
+    //     self.squaresize_v
+    // }
     // /// Set the new vertical square count and return the newly-set value.
     // /// This operation is expensive, since it needs to re-allocate memory
     // pub fn set_squares_v(&mut self, new_squares_v: usize) -> usize {
