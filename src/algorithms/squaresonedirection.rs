@@ -78,6 +78,26 @@ impl SquaresOneDirection {
             additional_random_points: 32,
         }
     }
+    pub fn new_horiz_randomized() -> Self {
+        SquaresOneDirection {
+            squares: SquaresLayer::new(0, 0, 10, 10),
+            variation_amount: 25,
+            visited_squares: vec![],
+            direction: Direction::HORIZONTAL,
+            weight: 20,
+            additional_random_points: 48,
+        }
+    }
+    pub fn new_vert_randomized() -> Self {
+        SquaresOneDirection {
+            squares: SquaresLayer::new(0, 0, 10, 10),
+            variation_amount: 25,
+            visited_squares: vec![],
+            direction: Direction::VERTICAL,
+            weight: 8,
+            additional_random_points: 48,
+        }
+    }
 }
 
 impl SquaresOneDirection {

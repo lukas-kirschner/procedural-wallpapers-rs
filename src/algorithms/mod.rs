@@ -41,6 +41,8 @@ impl Mode {
             Mode::SQUARESVER => { Box::new(SquaresOneDirection::new_vert()) }
             Mode::SQUARESDIAG => { Box::new(SquaresOneDirection::new_diag()) }
             Mode::SQUARES2 => { Box::new(SquaresOneDirection::new_nodir_randomized()) }
+            Mode::SQUARES2H => { Box::new(SquaresOneDirection::new_horiz_randomized()) }
+            Mode::SQUARES2V => { Box::new(SquaresOneDirection::new_vert_randomized()) }
         }
     }
 }
