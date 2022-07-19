@@ -8,9 +8,11 @@ $(1):
 	cargo run --release -- --mode "$$@" --width 400 --height 400 --seed 123456 -o "examples/$$@.png"
 endef
 
-.PHONY: all clean
+.PHONY: all thumbnails clean
 
-all: $(MODES)
+thumbnails: $(MODES)
+
+all: thumbnails
 
 $(foreach MODE, $(MODES), $(eval $(call build_thumbnail,$(MODE))) )
 

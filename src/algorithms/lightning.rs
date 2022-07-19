@@ -1,3 +1,4 @@
+use std::cmp::max;
 use image::{Rgb, RgbImage};
 use rand::Rng;
 use crate::Algorithm;
@@ -52,24 +53,22 @@ impl Lightning {
     }
     fn next_step(&mut self, rng: &mut impl Rng, img: &mut RgbImage, particles: &mut Vec<(u32, u32)>) {
         let (x, y) = self.place_charge(rng, img);
-        let mut nearest: Option<u32> = None;
-        let mut nearest_d_sq = img.width().pow(2) + img.height().pow(2);
-        for i in 0..self.step {
-            let dist_sq: u32 = ((particles[i as usize].0 as i32 - x as i32).pow(2) + (particles[i as usize].1 as i32 - y as i32).pow(2)).try_into().unwrap();
-            if dist_sq < nearest_d_sq {
-                nearest_d_sq = dist_sq;
-                nearest = Some(i);
-            }
-        }
-        let nearest = nearest.expect("No nearest was found!");
-        let mut dx: i32 = if particles[nearest as usize].0 < x { 1 } else { -1 };
-        let mut dy: i32 = if particles[nearest as usize].1 < y { 1 } else { -1 };
-        if dx * (x as i32 - particles[nearest as usize].0 as i32) > 3 * dy * (y as i32 - particles[nearest as usize].1 as i32) {
+        // Get the index of the nearest particle
+        let (nearest, _) = (0..self.step)
+            .map(|i| { (Some(i), ((particles[i as usize].0 as i32 - x as i32).pow(2) + (particles[i as usize].1 as i32 - y as i32).pow(2)) as u32) })
+            .fold((None, img.width().pow(2) + img.height().pow(2)), |i, j| { if j.1 < i.1 { (j.0, j.1) } else { (i.0, i.1) } });
+        // Unwrap the index
+        let nearest = nearest.expect("No nearest was found!") as usize;
+        let mut dx: i32 = if particles[nearest].0 < x { 1 } else { -1 };
+        let mut dy: i32 = if particles[nearest].1 < y { 1 } else { -1 };
+        if dx * (x as i32 - particles[nearest].0 as i32) > 3 * dy * (y as i32 - particles[nearest].1 as i32) {
             dy = 0;
-        } else if dy * (y as i32 - particles[nearest as usize].1 as i32) > 3 * dx * (x as i32 - particles[nearest as usize].0 as i32) {
+        } else if dy * (y as i32 - particles[nearest].1 as i32) > 3 * dx * (x as i32 - particles[nearest].0 as i32) {
             dx = 0;
         }
-        particles[self.step as usize] = ((particles[nearest as usize].0 as i32 + dx) as u32, (particles[nearest as usize].1 as i32 + dy) as u32);
+        assert!((-1..=1).contains(&dx));
+        assert!((-1..=1).contains(&dy));
+        particles[self.step as usize] = (max(particles[nearest].0 as i32 + dx, 0) as u32, max(0, particles[nearest].1 as i32 + dy) as u32);
         *img.get_pixel_mut(particles[self.step as usize].0, particles[self.step as usize].1) = Rgb(self.fg_color);
         *img.get_pixel_mut(particles[self.step as usize].0, particles[self.step as usize].1 + 1) = Rgb(self.fg_color);
         self.step += 1;

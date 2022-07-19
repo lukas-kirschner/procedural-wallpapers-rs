@@ -9,8 +9,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Diagonal Squares">
+    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Rewrote Makefile to use proper GNU make syntax">
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/lightning.png" beforeDir="false" afterPath="$PROJECT_DIR$/examples/lightning.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/nearestpoint.png" beforeDir="false" afterPath="$PROJECT_DIR$/examples/nearestpoint.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/lightning.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/lightning.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
       <recent name="$PROJECT_DIR$/src/algorithms" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Cargo Run">
+  <component name="RunManager" selected="Cargo.Run Lightning">
     <configuration name="Run Lightning" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value=" run -- --mode lightning --width 400 --height 400 --seed 1234 -o /tmp/lightning.png" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -108,7 +111,7 @@
       <workItem from="1658222090700" duration="4737000" />
       <workItem from="1658237209559" duration="4465000" />
       <workItem from="1658242004402" duration="502000" />
-      <workItem from="1658247947289" duration="1676000" />
+      <workItem from="1658247947289" duration="3143000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Licensing Information from Readme">
       <created>1657630156537</created>
@@ -159,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658248375248</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Rewrote Makefile to use proper GNU make syntax">
+      <created>1658249640845</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658249640845</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +197,7 @@
     <MESSAGE value="Commented out unused functions" />
     <MESSAGE value="Implemented Horizontal and Vertical squares" />
     <MESSAGE value="Implemented Diagonal Squares" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Diagonal Squares" />
+    <MESSAGE value="Rewrote Makefile to use proper GNU make syntax" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewrote Makefile to use proper GNU make syntax" />
   </component>
 </project>
