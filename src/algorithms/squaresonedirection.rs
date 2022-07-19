@@ -9,6 +9,7 @@ enum Direction {
     HORIZONTAL,
     VERTICAL,
     DIAGONAL,
+    NONE,
 }
 
 /// A simple algorithm that starts with a random colored square in the upper-right corner.
@@ -51,6 +52,15 @@ impl SquaresOneDirection {
             visited_squares: vec![],
             direction: Direction::DIAGONAL,
             weight: 4,
+        }
+    }
+    pub fn new_nodir() -> Self {
+        SquaresOneDirection {
+            squares: SquaresLayer::new(0, 0, 10, 10),
+            variation_amount: 20,
+            visited_squares: vec![],
+            direction: Direction::NONE,
+            weight: 0,
         }
     }
 }
@@ -100,6 +110,9 @@ impl SquaresOneDirection {
                             } else {
                                 colors.push(color);
                             }
+                        }
+                        Direction::NONE => {
+                            colors.push(color);
                         }
                     }
                 }
