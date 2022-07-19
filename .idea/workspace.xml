@@ -9,13 +9,13 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Commented out unused functions">
-      <change afterPath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" afterDir="false" />
+    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Horizontal and Vertical squares">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/nearestpoint.png" beforeDir="false" afterPath="$PROJECT_DIR$/examples/nearestpoint.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +113,8 @@
       <workItem from="1658166519717" duration="85000" />
       <workItem from="1658222090700" duration="4737000" />
       <workItem from="1658237209559" duration="4465000" />
-      <workItem from="1658242004402" duration="450000" />
+      <workItem from="1658242004402" duration="502000" />
+      <workItem from="1658247947289" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Licensing Information from Readme">
       <created>1657630156537</created>
@@ -150,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658240179895</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented Horizontal and Vertical squares">
+      <created>1658242472885</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658242472885</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +184,7 @@
     <MESSAGE value="Implemented Squares" />
     <MESSAGE value="Abstracted Squares into own struct for re-use later" />
     <MESSAGE value="Commented out unused functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commented out unused functions" />
+    <MESSAGE value="Implemented Horizontal and Vertical squares" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Horizontal and Vertical squares" />
   </component>
 </project>

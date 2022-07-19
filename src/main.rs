@@ -25,6 +25,7 @@ enum Mode {
     SQUARES,
     SQUARESHOR,
     SQUARESVER,
+    SQUARESDIAG,
 }
 
 impl FromStr for Mode {
@@ -42,6 +43,7 @@ impl FromStr for Mode {
             "squares" => Ok(Mode::SQUARES),
             "squareshor" => Ok(Mode::SQUARESHOR),
             "squaresver" => Ok(Mode::SQUARESVER),
+            "squaresdiag" => Ok(Mode::SQUARESDIAG),
             _ => Err(format!("Invalid Mode: {}", s))
         }
     }

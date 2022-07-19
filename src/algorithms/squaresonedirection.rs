@@ -8,6 +8,7 @@ use crate::layers::squareslayer::SquaresLayer;
 enum Direction {
     HORIZONTAL,
     VERTICAL,
+    DIAGONAL,
 }
 
 /// A simple algorithm that starts with a random colored square in the upper-right corner.
@@ -43,6 +44,15 @@ impl SquaresOneDirection {
             weight: 4,
         }
     }
+    pub fn new_diag() -> Self {
+        SquaresOneDirection {
+            squares: SquaresLayer::new(0, 0, 10, 10),
+            variation_amount: 25,
+            visited_squares: vec![],
+            direction: Direction::DIAGONAL,
+            weight: 4,
+        }
+    }
 }
 
 impl SquaresOneDirection {
@@ -75,6 +85,15 @@ impl SquaresOneDirection {
                         }
                         Direction::VERTICAL => {
                             if xx as usize == square_x && yy as usize != square_y {
+                                for _ in 0..self.weight {
+                                    colors.push(color);
+                                }
+                            } else {
+                                colors.push(color);
+                            }
+                        }
+                        Direction::DIAGONAL => {
+                            if xx as usize != square_x && yy as usize != square_y {
                                 for _ in 0..self.weight {
                                     colors.push(color);
                                 }

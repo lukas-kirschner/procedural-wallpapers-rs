@@ -41,6 +41,7 @@ impl Mode {
             Mode::SQUARES => { Box::new(Squares::default()) }
             Mode::SQUARESHOR => { Box::new(SquaresOneDirection::new_horiz()) }
             Mode::SQUARESVER => { Box::new(SquaresOneDirection::new_vert()) }
+            Mode::SQUARESDIAG => { Box::new(SquaresOneDirection::new_diag()) }
         }
     }
 }
