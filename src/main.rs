@@ -29,6 +29,7 @@ enum Mode {
     SQUARES2,
     SQUARES2H,
     SQUARES2V,
+    NEARESTGRADIENT,
 }
 
 impl FromStr for Mode {
@@ -50,6 +51,7 @@ impl FromStr for Mode {
             "squares2" => Ok(Mode::SQUARES2),
             "squares2h" => Ok(Mode::SQUARES2H),
             "squares2v" => Ok(Mode::SQUARES2H),
+            "nearestgradient" => Ok(Mode::NEARESTGRADIENT),
             _ => Err(format!("Invalid Mode: {}", s))
         }
     }

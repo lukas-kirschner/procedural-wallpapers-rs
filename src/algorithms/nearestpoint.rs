@@ -4,6 +4,11 @@ use image::{Rgb, RgbImage};
 use rand::Rng;
 use crate::Algorithm;
 
+enum PointDrawingMode {
+    HARD,
+    SMOOTH { brightness: f64 },
+}
+
 #[derive(Eq, PartialEq, Hash)]
 struct Point {
     /// X Coordinate
@@ -41,12 +46,25 @@ impl Point {
 /// Nearest Points Algorithm Implementation by Lukas Kirschner, 2021
 pub struct NearestPoint {
     points: HashSet<Point>,
+    mode: PointDrawingMode,
 }
 
 impl Default for NearestPoint {
     fn default() -> Self {
         NearestPoint {
             points: HashSet::new(),
+            mode: PointDrawingMode::HARD,
+        }
+    }
+}
+
+impl NearestPoint {
+    pub fn new_soft() -> Self {
+        NearestPoint {
+            points: HashSet::new(),
+            mode: PointDrawingMode::SMOOTH {
+                brightness: 1.25
+            },
         }
     }
 }
@@ -67,10 +85,30 @@ impl NearestPoint {
     }
     fn color_image(&self, img: &mut RgbImage) {
         for (x, y, pixel) in img.enumerate_pixels_mut() {
-            let nearest_point = self.points.iter().min_by(|first, second| {
-                first.distance_to(x, y).total_cmp(&second.distance_to(x, y))
-            });
-            *pixel = Rgb(nearest_point.unwrap_or(&Point::black()).color_at(x, y));
+            match self.mode {
+                PointDrawingMode::HARD => {
+                    let nearest_point = self.points.iter().min_by(|first, second| {
+                        first.distance_to(x, y).total_cmp(&second.distance_to(x, y))
+                    });
+                    *pixel = Rgb(nearest_point.unwrap_or(&Point::black()).color_at(x, y));
+                }
+                PointDrawingMode::SMOOTH { brightness } => {
+                    let new_color: [f64; 3] = self.points.iter()
+                        .map(|point| {
+                            [
+                                point.color[0] as f64 / (point.distance_to(x, y) as f64 + 1.0).powf(1.0 / brightness),
+                                point.color[1] as f64 / (point.distance_to(x, y) as f64 + 1.0).powf(1.0 / brightness),
+                                point.color[2] as f64 / (point.distance_to(x, y) as f64 + 1.0).powf(1.0 / brightness),
+                            ]
+                        }).fold([0.0, 0.0, 0.0], |a, b| [a[0] + b[0], a[1] + b[1], a[2] + b[2]]);
+                    let new_color = [
+                        f64::min(255.0, new_color[0]) as u8,
+                        f64::min(255.0, new_color[1]) as u8,
+                        f64::min(255.0, new_color[2]) as u8,
+                    ];
+                    *pixel = Rgb(new_color);
+                }
+            }
         }
     }
 }
