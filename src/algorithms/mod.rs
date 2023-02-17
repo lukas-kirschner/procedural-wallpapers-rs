@@ -18,6 +18,7 @@ mod nearestpoint;
 mod tangles;
 mod cellularone;
 mod squaresonedirection;
+mod randompatterns;
 
 /// This module contains all the image generation algorithms.
 
