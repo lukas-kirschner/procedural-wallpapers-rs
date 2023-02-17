@@ -10,6 +10,7 @@ use std::str::FromStr;
 
 mod algorithms;
 mod layers;
+mod patterns;
 mod utils;
 
 #[derive(Debug, Copy, Clone, PartialEq, ValueEnum)]

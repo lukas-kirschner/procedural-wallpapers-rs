@@ -16,23 +16,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Nearest-Gradient">
-      <change beforePath="$PROJECT_DIR$/.idea/procedural-wallpapers-rs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/procedural-wallpapers-rs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Make_Thumbnails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Make_Thumbnails.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithms/randompatterns.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patterns/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patterns/pattern.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Run_and_Open_Lightning.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Run_and_Open_Lightning.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Run_and_Open_Nearest_Gradient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Run_and_Open_Nearest_Gradient.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/cellularone.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/cellularone.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/clouds.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/clouds.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/flow.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/flow.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/islands.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/islands.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/lightning.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/lightning.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithms/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/nearestpoint.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/nearestpoint.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/tangles.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/tangles.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/squareslayer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/squareslayer.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/perlin.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/perlin.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +56,10 @@
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2BeTGvrPhFtUPmN1u6en4gf41Rf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -89,7 +80,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Rebasing patterns",
     "last_opened_file_path": "/home/lukas/workspace/procedural-wallpapers-rs/src/algorithms",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -97,6 +88,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
     "settings.editor.selected.configurable": "actions.on.save",
     "vue.rearranger.settings.migration": "true"
   }

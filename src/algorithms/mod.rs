@@ -16,6 +16,7 @@ mod flow;
 mod islands;
 mod lightning;
 mod nearestpoint;
+mod randompatterns;
 mod squaresonedirection;
 mod tangles;
 
