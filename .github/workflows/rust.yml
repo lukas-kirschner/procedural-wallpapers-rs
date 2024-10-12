@@ -1,0 +1,80 @@
+on: [ push, pull_request ]
+
+name: Rust Toolchain
+
+env:
+  LD_LIBRARY_PATH: "target/debug/deps:target/release/deps:${GITHUB_WORKSPACE}/target/debug/deps:${GITHUB_WORKSPACE}/target/release/deps:${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib:${LD_LIBRARY_PATH}"
+  PROC_WALLP_BUILD_NUMBER: ${{ github.run_number }}
+
+jobs:
+  fmt:
+    name: Check Formatting Rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+          lfs: true
+          submodules: true
+      - name: Install Stable Rust Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - run: "rustup component add rustfmt"
+      - name: Check RustFMT
+        uses: actions-rs/cargo@v1
+        with:
+          command: "fmt"
+          args: "--all -- --check"
+  clippy:
+    name: "Cargo Clippy"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Install Dependencies
+        run: sudo apt-get install -y libwayland-dev libxkbcommon-dev
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+          lfs: true
+          submodules: true
+      - uses: "actions-rs/toolchain@v1"
+        with:
+          profile: "minimal"
+          toolchain: "stable"
+          override: true
+      - run: "rustup component add clippy"
+      - uses: "actions-rs/cargo@v1"
+        with:
+          command: "clippy"
+          args: "-- -D warnings"
+  build_linux64:
+    name: Build Nightly for Linux x64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: sudo apt-get install -y libwayland-dev libxkbcommon-dev
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+          lfs: true
+          submodules: true
+      - name: Install Stable Rust Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - name: Build Nightly in Release Mode
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: proceduralwallpapers-linux-x64
+          path: |
+            target/release
