@@ -7,25 +7,24 @@ Rewritten in Rust.
 1. Set up your Rust toolchain with Cargo
 2. Clone this repository
 3. Build the project by typing `cargo build --release` 
-4. To get command-line help, run the build binary with the `--help` flag.
+4. To get command-line help, run the built `procedural_wallpapers` binary with the `--help` flag.
 
 ### Command-Line options
 ```text
-procedural_wallpapers 0.1.0
-Generate wallpapers procedurally with the given algorithm
+> cargo run --release --package procedural_wallpapers -- --help
 
-USAGE:
-    procedural_wallpapers [OPTIONS] --mode <MODE> --output <OUTPUT>
+Procedural Wallpapers Generator - CLI tool
 
-OPTIONS:
-    -h, --height <HEIGHT>    Desired height (pixels) of the generated image [default: 1080]
-        --help               Print help information
-    -m, --mode <MODE>        Image generation mode [possible values: clouds]
-    -o, --output <OUTPUT>    The output file to save
-    -s, --seed <SEED>        Seed for the random number generator. If a seed of 0 is given, no seed
-                             is used [default: 0]
-    -V, --version            Print version information
-    -w, --width <WIDTH>      Desired width (pixels) of the generated image [default: 1920]
+Usage: procedural_wallpapers [OPTIONS] --mode <MODE> --output <OUTPUT>
+
+Options:
+  -m, --mode <MODE>      Image generation mode [possible values: clouds, flow, islands, lightning, nearestpoint, tangles, cellularone, squares, squareshor, squaresver, squaresdiag, squares2, squares2h, squares2v, nearestgradient]
+  -w, --width <WIDTH>    Desired width (pixels) of the generated image [default: 1920]
+  -h, --height <HEIGHT>  Desired height (pixels) of the generated image [default: 1080]
+  -s, --seed <SEED>      Seed for the random number generator. If a seed of 0 is given, no seed is used [default: 0]
+  -o, --output <OUTPUT>  The output file to save
+      --help             Open the command-line help
+  -V, --version          Print version
 
 ```
 
