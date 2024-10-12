@@ -17,9 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Nearest-Gradient">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,10 +56,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Cargo.Run Lightning.executor": "Run",
     "Cargo.Run Nearest Gradient.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "Shell Script.Make Thumbnails.executor": "Run",
+    "Shell Script.Run and Open Lightning.executor": "Run",
+    "Shell Script.Run and Open Nearest Gradient.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
@@ -82,13 +84,14 @@
       <recent name="$PROJECT_DIR$/src/algorithms" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.Run and Open Nearest Gradient">
+  <component name="RunManager" selected="Shell Script.Make Thumbnails">
     <list>
       <item itemvalue="Cargo.Cargo Run" />
       <item itemvalue="Cargo.Run Lightning" />
       <item itemvalue="Cargo.Run Nearest Gradient" />
       <item itemvalue="Shell Script.Run and Open Lightning" />
       <item itemvalue="Shell Script.Run and Open Nearest Gradient" />
+      <item itemvalue="Shell Script.Make Thumbnails" />
     </list>
   </component>
   <component name="RustProjectSettings">
@@ -121,7 +124,7 @@
       <workItem from="1674487716828" duration="171000" />
       <workItem from="1676658610811" duration="1324000" />
       <workItem from="1676712026684" duration="57000" />
-      <workItem from="1728732973399" duration="736000" />
+      <workItem from="1728732973399" duration="1072000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Licensing Information from Readme">
       <created>1657630156537</created>

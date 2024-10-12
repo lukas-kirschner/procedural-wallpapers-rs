@@ -17,4 +17,4 @@ all: thumbnails
 $(foreach MODE, $(MODES), $(eval $(call build_thumbnail,$(MODE))) )
 
 clean:
-	rm -f "examples/$(BUILDS)"
+	rm -f "examples/*.png"
