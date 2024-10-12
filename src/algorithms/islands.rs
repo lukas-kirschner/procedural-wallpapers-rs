@@ -1,7 +1,7 @@
+use crate::utils::perlin::Perlin;
+use crate::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
-use crate::Algorithm;
-use crate::utils::perlin::Perlin;
 
 /// Islands
 /// Based on the ISLANDS algorithm implementation by Attila Bagyoni, 2018
@@ -31,7 +31,13 @@ impl Default for Islands {
 }
 
 impl Islands {
-    fn compute_threshold(&self, value: u8, replacement_1: u8, replacement_2: u8, replacement_3: u8) -> u8 {
+    fn compute_threshold(
+        &self,
+        value: u8,
+        replacement_1: u8,
+        replacement_2: u8,
+        replacement_3: u8,
+    ) -> u8 {
         if value > self.threshold_val_1 {
             replacement_1
         } else if value > self.threshold_val_2 {
@@ -58,22 +64,39 @@ impl Islands {
     }
 }
 
-impl<R:Rng> Algorithm<R> for Islands {
+impl<R: Rng> Algorithm<R> for Islands {
     fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
         // Six grid squares for the longer dimension of the image
         let grid_size_in_px: usize = ((if img.width() > img.height() {
             img.height()
         } else {
             img.width()
-        } as f64 - (2.0 * self.grid_margins as f64)) / 6.0) as usize;
+        } as f64
+            - (2.0 * self.grid_margins as f64))
+            / 6.0) as usize;
         let mut perlin = Perlin::new(img.width() as usize, img.height() as usize);
         perlin.regenerate_noise(rng);
         for (x, y, pixel) in img.enumerate_pixels_mut() {
             let val: u8 = (185.0 + perlin.fractal(x as f64, y as f64, 0.004, 8)? * 70.0) as u8;
             *pixel = Rgb([
-                self.compute_threshold(val, (self.foreground_base_color[0] as f64 * val as f64 / 255.0) as u8, self.border_color[0], ((self.background_base_color[0] as u32 + val as u32) as f64 / 2.0) as u8),
-                self.compute_threshold(val, (self.foreground_base_color[1] as f64 * val as f64 / 255.0) as u8, self.border_color[1], ((self.background_base_color[1] as u32 + val as u32) as f64 / 2.0) as u8),
-                self.compute_threshold(val, (self.foreground_base_color[2] as f64 * val as f64 / 255.0) as u8, self.border_color[2], ((self.background_base_color[2] as u32 + val as u32) as f64 / 2.0) as u8)
+                self.compute_threshold(
+                    val,
+                    (self.foreground_base_color[0] as f64 * val as f64 / 255.0) as u8,
+                    self.border_color[0],
+                    ((self.background_base_color[0] as u32 + val as u32) as f64 / 2.0) as u8,
+                ),
+                self.compute_threshold(
+                    val,
+                    (self.foreground_base_color[1] as f64 * val as f64 / 255.0) as u8,
+                    self.border_color[1],
+                    ((self.background_base_color[1] as u32 + val as u32) as f64 / 2.0) as u8,
+                ),
+                self.compute_threshold(
+                    val,
+                    (self.foreground_base_color[2] as f64 * val as f64 / 255.0) as u8,
+                    self.border_color[2],
+                    ((self.background_base_color[2] as u32 + val as u32) as f64 / 2.0) as u8,
+                ),
             ]);
         }
         for y in (self.grid_margins..(img.height() as usize)).step_by(grid_size_in_px) {

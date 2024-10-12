@@ -1,6 +1,7 @@
 /// Perlin Noise Implementation in Rust
 use rand::Rng;
 
+
 pub struct Perlin {
     /// Width of the perlin noise
     width: usize,
@@ -18,12 +19,21 @@ impl Perlin {
             gradient: vec![vec![(0.0, 0.0); height]; width],
         }
     }
-    fn distance_along_gradient(&self, x: f64, y: f64, gridx: usize, gridy: usize) -> Result<f64, String> {
+    fn distance_along_gradient(
+        &self,
+        x: f64,
+        y: f64,
+        gridx: usize,
+        gridy: usize,
+    ) -> Result<f64, String> {
         if gridx >= self.width || gridy >= self.height {
-            Err(format!("Coordinates ({},{}) out of bounds for image of size ({},{})!", gridx, gridy, self.width, self.height))
+            Err(format!(
+                "Coordinates ({},{}) out of bounds for image of size ({},{})!",
+                gridx, gridy, self.width, self.height
+            ))
         } else {
-            Ok((x - gridx as f64) * self.gradient[gridx][gridy].0 +
-                (y - gridy as f64) * self.gradient[gridx][gridy].1)
+            Ok((x - gridx as f64) * self.gradient[gridx][gridy].0
+                + (y - gridy as f64) * self.gradient[gridx][gridy].1)
         }
     }
     fn inter(x: f64, y: f64, weight: f64) -> f64 {
@@ -54,7 +64,9 @@ impl Perlin {
     pub fn fractal(&self, x: f64, y: f64, freq: f64, depth: u32) -> Result<f64, String> {
         match depth {
             0 => Ok(0.0),
-            d => Ok(self.perlin(x * freq, y * freq)? + self.fractal(x, y, freq * 2.0, d - 1)? / 2.0)
+            d => {
+                Ok(self.perlin(x * freq, y * freq)? + self.fractal(x, y, freq * 2.0, d - 1)? / 2.0)
+            },
         }
     }
 }

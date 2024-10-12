@@ -1,8 +1,8 @@
-use std::f64::consts::PI;
+use crate::utils::perlin::Perlin;
+use crate::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
-use crate::Algorithm;
-use crate::utils::perlin::Perlin;
+use std::f64::consts::PI;
 
 /// Flow
 /// Based on the FLOW algorithm implementation by Attila Bagyoni, 2018
@@ -32,17 +32,29 @@ impl Flow {
     /// Get the signum as integer
     fn signum(&self) -> i8 {
         match self.signum {
-            true => { 1 }
-            false => { -1 }
+            true => 1,
+            false => -1,
         }
     }
-    fn make_single_path(&self, rng: &mut impl Rng, perlin: &Perlin, flow: &mut Vec<Vec<f64>>, img: &RgbImage) -> Result<(), String> {
+    fn make_single_path(
+        &self,
+        rng: &mut impl Rng,
+        perlin: &Perlin,
+        flow: &mut [Vec<f64>],
+        img: &RgbImage,
+    ) -> Result<(), String> {
         let mut x: f64 = rng.gen_range(0..img.width()) as f64;
         let mut y: f64 = rng.gen_range(0..img.height()) as f64;
         let mut i: u32 = 0;
-        while i < self.path_len && x > 0.0 && x < img.width() as f64 && y > 0.0 && y < img.height() as f64 {
+        while i < self.path_len
+            && x > 0.0
+            && x < img.width() as f64
+            && y > 0.0
+            && y < img.height() as f64
+        {
             flow[x as usize][y as usize] += ((self.path_len - i) as f64) / self.path_len as f64;
-            let angle: f64 = 2.0 * PI * (perlin.fractal(x, y, self.frequency, 6)? - 0.5) * self.curvature;
+            let angle: f64 =
+                2.0 * PI * (perlin.fractal(x, y, self.frequency, 6)? - 0.5) * self.curvature;
             x += angle.cos();
             y += angle.sin();
             i += 1;
@@ -67,7 +79,9 @@ impl<R: Rng> Algorithm<R> for Flow {
             .flatten()
             .fold(f64::NEG_INFINITY, |prev, curr| prev.max(*curr));
         for (x, y, pixel) in img.enumerate_pixels_mut() {
-            let val: u8 = (256.0 + (self.signum() as f64) * (55.0 + 200.0 * flow[x as usize][y as usize] / max)) as u8;
+            let val: u8 = (256.0
+                + (self.signum() as f64) * (55.0 + 200.0 * flow[x as usize][y as usize] / max))
+                as u8;
             *pixel = Rgb([val, val, val]);
         }
         Ok(())

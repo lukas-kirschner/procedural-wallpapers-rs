@@ -1,15 +1,15 @@
-use std::cmp::{max, min};
-use image::{RgbImage};
-use rand::Rng;
-use crate::Algorithm;
-use crate::layers::Layer;
 use crate::layers::squareslayer::SquaresLayer;
+use crate::layers::Layer;
+use crate::Algorithm;
+use image::RgbImage;
+use rand::Rng;
+use std::cmp::{max, min};
 
 enum Direction {
-    HORIZONTAL,
-    VERTICAL,
-    DIAGONAL,
-    NONE,
+    Horizontal,
+    Vertical,
+    Diagonal,
+    None,
 }
 
 /// A simple algorithm that starts with a random colored square in the upper-right corner.
@@ -33,7 +33,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 25,
             visited_squares: vec![],
-            direction: Direction::HORIZONTAL,
+            direction: Direction::Horizontal,
             weight: 6,
             additional_random_points: 0,
         }
@@ -43,7 +43,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 25,
             visited_squares: vec![],
-            direction: Direction::VERTICAL,
+            direction: Direction::Vertical,
             weight: 4,
             additional_random_points: 0,
         }
@@ -53,7 +53,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 25,
             visited_squares: vec![],
-            direction: Direction::DIAGONAL,
+            direction: Direction::Diagonal,
             weight: 4,
             additional_random_points: 0,
         }
@@ -63,7 +63,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 20,
             visited_squares: vec![],
-            direction: Direction::NONE,
+            direction: Direction::None,
             weight: 0,
             additional_random_points: 0,
         }
@@ -73,7 +73,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 20,
             visited_squares: vec![],
-            direction: Direction::NONE,
+            direction: Direction::None,
             weight: 0,
             additional_random_points: 32,
         }
@@ -83,7 +83,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 25,
             visited_squares: vec![],
-            direction: Direction::HORIZONTAL,
+            direction: Direction::Horizontal,
             weight: 20,
             additional_random_points: 48,
         }
@@ -93,7 +93,7 @@ impl SquaresOneDirection {
             squares: SquaresLayer::new(0, 0, 10, 10),
             variation_amount: 25,
             visited_squares: vec![],
-            direction: Direction::VERTICAL,
+            direction: Direction::Vertical,
             weight: 8,
             additional_random_points: 48,
         }
@@ -129,11 +129,15 @@ impl SquaresOneDirection {
     fn get_average_color_of_squares(&self, square_x: usize, square_y: usize) -> Option<[u8; 3]> {
         // We need a vector here because elements may occur more than once
         let mut colors: Vec<&[u8; 3]> = Vec::new();
-        for xx in max(0, square_x as i32 - 1)..=min(self.squares.squares_h() as i32 - 1, square_x as i32 + 1) {
-            for yy in max(0, square_y as i32 - 1)..=min(self.squares.squares_v() as i32 - 1, square_y as i32 + 1) {
+        for xx in max(0, square_x as i32 - 1)
+            ..=min(self.squares.squares_h() as i32 - 1, square_x as i32 + 1)
+        {
+            for yy in max(0, square_y as i32 - 1)
+                ..=min(self.squares.squares_v() as i32 - 1, square_y as i32 + 1)
+            {
                 if let Some(color) = self.get_square_color(xx as usize, yy as usize) {
                     match self.direction {
-                        Direction::HORIZONTAL => {
+                        Direction::Horizontal => {
                             if yy as usize == square_y && xx as usize != square_x {
                                 for _ in 0..self.weight {
                                     colors.push(color);
@@ -141,8 +145,8 @@ impl SquaresOneDirection {
                             } else {
                                 colors.push(color);
                             }
-                        }
-                        Direction::VERTICAL => {
+                        },
+                        Direction::Vertical => {
                             if xx as usize == square_x && yy as usize != square_y {
                                 for _ in 0..self.weight {
                                     colors.push(color);
@@ -150,8 +154,8 @@ impl SquaresOneDirection {
                             } else {
                                 colors.push(color);
                             }
-                        }
-                        Direction::DIAGONAL => {
+                        },
+                        Direction::Diagonal => {
                             if xx as usize != square_x && yy as usize != square_y {
                                 for _ in 0..self.weight {
                                     colors.push(color);
@@ -159,19 +163,22 @@ impl SquaresOneDirection {
                             } else {
                                 colors.push(color);
                             }
-                        }
-                        Direction::NONE => {
+                        },
+                        Direction::None => {
                             colors.push(color);
-                        }
+                        },
                     }
                 }
             }
         }
-        if colors.len() > 0 {
+        if !colors.is_empty() {
             Some([
-                (colors.iter().map(|color| { color[0] as u32 }).sum::<u32>() as u32 / colors.len() as u32) as u8,
-                (colors.iter().map(|color| { color[1] as u32 }).sum::<u32>() as u32 / colors.len() as u32) as u8,
-                (colors.iter().map(|color| { color[2] as u32 }).sum::<u32>() as u32 / colors.len() as u32) as u8,
+                (colors.iter().map(|color| color[0] as u32).sum::<u32>() / colors.len() as u32)
+                    as u8,
+                (colors.iter().map(|color| color[1] as u32).sum::<u32>() / colors.len() as u32)
+                    as u8,
+                (colors.iter().map(|color| color[2] as u32).sum::<u32>() / colors.len() as u32)
+                    as u8,
             ])
         } else {
             None
@@ -180,22 +187,29 @@ impl SquaresOneDirection {
 
     fn color_square_average(&mut self, rng: &mut impl Rng, square_x: usize, square_y: usize) {
         if let Some(average_color) = self.get_average_color_of_squares(square_x, square_y) {
-            let color_offset: i32 = rng.gen_range(-(self.variation_amount as i32)..=(self.variation_amount as i32));
+            let color_offset: i32 =
+                rng.gen_range(-(self.variation_amount as i32)..=(self.variation_amount as i32));
             let mut variant_color: [u8; 3] = average_color;
             let channel_id: usize = rng.gen_range(0..3);
             if color_offset > 0 {
-                variant_color[channel_id] = min(255, average_color[channel_id] as i32 + color_offset) as u8;
+                variant_color[channel_id] =
+                    min(255, average_color[channel_id] as i32 + color_offset) as u8;
             } else {
-                variant_color[channel_id] = max(0, average_color[channel_id] as i32 + color_offset) as u8;
+                variant_color[channel_id] =
+                    max(0, average_color[channel_id] as i32 + color_offset) as u8;
             }
             self.squares.set_color_at(square_x, square_y, variant_color);
         } else {
             // Setting a color without any adjacent neighbors --> Completely random color
-            self.squares.set_color_at(square_x, square_y, [
-                rng.gen_range(0..255),
-                rng.gen_range(0..255),
-                rng.gen_range(0..255),
-            ]);
+            self.squares.set_color_at(
+                square_x,
+                square_y,
+                [
+                    rng.gen_range(0..255),
+                    rng.gen_range(0..255),
+                    rng.gen_range(0..255),
+                ],
+            );
         }
         self.visited_squares[square_x][square_y] = true;
     }
@@ -203,10 +217,14 @@ impl SquaresOneDirection {
 
 impl<R: Rng> Algorithm<R> for SquaresOneDirection {
     fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
-        self.squares.adjust_square_count_to_image_dimensions(img.width() as usize, img.height() as usize);
-        self.visited_squares = vec![vec![false; self.squares.squares_v()]; self.squares.squares_h()];
+        self.squares
+            .adjust_square_count_to_image_dimensions(img.width() as usize, img.height() as usize);
+        self.visited_squares =
+            vec![vec![false; self.squares.squares_v()]; self.squares.squares_h()];
         // n points per 1000x1000 pixels
-        self.additional_random_points = (self.additional_random_points as f64 * (img.width() as f64 * img.height() as f64) / (1000.0 * 1000.0)) as usize;
+        self.additional_random_points = (self.additional_random_points as f64
+            * (img.width() as f64 * img.height() as f64)
+            / (1000.0 * 1000.0)) as usize;
         self.populate_points(rng);
 
         for x in 0..self.squares.squares_h() {

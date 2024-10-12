@@ -1,58 +1,55 @@
+use crate::algorithms::Algorithm;
+use clap::ValueHint;
+use clap::{Parser, ValueEnum};
+use image::{ImageBuffer, RgbImage};
+use rand_chacha::rand_core::SeedableRng;
+use rand_chacha::ChaCha8Rng;
 use std::borrow::BorrowMut;
 use std::path::PathBuf;
 use std::str::FromStr;
-use clap::{Parser, ValueEnum};
-use clap::ValueHint;
-use image::{ImageBuffer, RgbImage};
-use crate::algorithms::Algorithm;
-use rand_chacha::ChaCha8Rng;
-use rand_chacha::rand_core::SeedableRng;
 
 mod algorithms;
-mod utils;
 mod layers;
+mod utils;
 
 #[derive(Debug, Copy, Clone, PartialEq, ValueEnum)]
 enum Mode {
-    CLOUDS,
-    FLOW,
-    ISLANDS,
-    LIGHTNING,
-    NEARESTPOINT,
-    TANGLES,
-    CELLULARONE,
-    SQUARES,
-    SQUARESHOR,
-    SQUARESVER,
-    SQUARESDIAG,
-    SQUARES2,
-    SQUARES2H,
-    SQUARES2V,
-    NEARESTGRADIENT,
+    #[clap(name = "clouds")]
+    Clouds,
+    #[clap(name = "flow")]
+    Flow,
+    #[clap(name = "islands")]
+    Islands,
+    #[clap(name = "lightning")]
+    Lightning,
+    #[clap(name = "nearestpoint")]
+    NearestPoint,
+    #[clap(name = "tangles")]
+    Tangles,
+    #[clap(name = "cellularone")]
+    CellularOne,
+    #[clap(name = "squares")]
+    Squares,
+    #[clap(name = "squareshor")]
+    SquaresHor,
+    #[clap(name = "squaresver")]
+    SquaresVer,
+    #[clap(name = "squaresdiag")]
+    SquaresDiag,
+    #[clap(name = "squares2")]
+    Squares2,
+    #[clap(name = "squares2h")]
+    Squares2H,
+    #[clap(name = "squares2v")]
+    Squares2V,
+    #[clap(name = "nearestgradient")]
+    NearestGradient,
 }
 
 impl FromStr for Mode {
     type Err = String;
-
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s.to_ascii_lowercase().as_str() {
-            "clouds" => Ok(Mode::CLOUDS),
-            "flow" => Ok(Mode::FLOW),
-            "islands" => Ok(Mode::ISLANDS),
-            "lightning" => Ok(Mode::LIGHTNING),
-            "nearest-point" => Ok(Mode::NEARESTPOINT),
-            "tangles" => Ok(Mode::TANGLES),
-            "cellularone" => Ok(Mode::CELLULARONE),
-            "squares" => Ok(Mode::SQUARES),
-            "squareshor" => Ok(Mode::SQUARESHOR),
-            "squaresver" => Ok(Mode::SQUARESVER),
-            "squaresdiag" => Ok(Mode::SQUARESDIAG),
-            "squares2" => Ok(Mode::SQUARES2),
-            "squares2h" => Ok(Mode::SQUARES2H),
-            "squares2v" => Ok(Mode::SQUARES2H),
-            "nearestgradient" => Ok(Mode::NEARESTGRADIENT),
-            _ => Err(format!("Invalid Mode: {}", s))
-        }
+        ValueEnum::from_str(s, true)
     }
 }
 

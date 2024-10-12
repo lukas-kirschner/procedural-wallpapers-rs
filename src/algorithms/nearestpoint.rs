@@ -1,12 +1,12 @@
-use std::cmp::max;
-use std::collections::HashSet;
+use crate::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
-use crate::Algorithm;
+use std::cmp::max;
+use std::collections::HashSet;
 
 enum PointDrawingMode {
-    HARD,
-    SMOOTH { brightness: f64 },
+    Hard,
+    Smooth { brightness: f64 },
 }
 
 #[derive(Eq, PartialEq, Hash)]
@@ -53,7 +53,7 @@ impl Default for NearestPoint {
     fn default() -> Self {
         NearestPoint {
             points: HashSet::new(),
-            mode: PointDrawingMode::HARD,
+            mode: PointDrawingMode::Hard,
         }
     }
 }
@@ -62,9 +62,7 @@ impl NearestPoint {
     pub fn new_soft() -> Self {
         NearestPoint {
             points: HashSet::new(),
-            mode: PointDrawingMode::SMOOTH {
-                brightness: 1.25
-            },
+            mode: PointDrawingMode::Smooth { brightness: 1.25 },
         }
     }
 }
@@ -78,7 +76,7 @@ impl NearestPoint {
                 color: [
                     rng.gen_range(0..128) + 128,
                     rng.gen_range(0..128) + 128,
-                    rng.gen_range(0..128) + 128
+                    rng.gen_range(0..128) + 128,
                 ],
             });
         }
@@ -86,28 +84,36 @@ impl NearestPoint {
     fn color_image(&self, img: &mut RgbImage) {
         for (x, y, pixel) in img.enumerate_pixels_mut() {
             match self.mode {
-                PointDrawingMode::HARD => {
+                PointDrawingMode::Hard => {
                     let nearest_point = self.points.iter().min_by(|first, second| {
                         first.distance_to(x, y).total_cmp(&second.distance_to(x, y))
                     });
                     *pixel = Rgb(nearest_point.unwrap_or(&Point::black()).color_at(x, y));
-                }
-                PointDrawingMode::SMOOTH { brightness } => {
-                    let new_color: [f64; 3] = self.points.iter()
+                },
+                PointDrawingMode::Smooth { brightness } => {
+                    let new_color: [f64; 3] = self
+                        .points
+                        .iter()
                         .map(|point| {
                             [
-                                point.color[0] as f64 / (point.distance_to(x, y) as f64 + 1.0).powf(1.0 / brightness),
-                                point.color[1] as f64 / (point.distance_to(x, y) as f64 + 1.0).powf(1.0 / brightness),
-                                point.color[2] as f64 / (point.distance_to(x, y) as f64 + 1.0).powf(1.0 / brightness),
+                                point.color[0] as f64
+                                    / (point.distance_to(x, y) + 1.0).powf(1.0 / brightness),
+                                point.color[1] as f64
+                                    / (point.distance_to(x, y) + 1.0).powf(1.0 / brightness),
+                                point.color[2] as f64
+                                    / (point.distance_to(x, y) + 1.0).powf(1.0 / brightness),
                             ]
-                        }).fold([0.0, 0.0, 0.0], |a, b| [a[0] + b[0], a[1] + b[1], a[2] + b[2]]);
+                        })
+                        .fold([0.0, 0.0, 0.0], |a, b| {
+                            [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
+                        });
                     let new_color = [
                         f64::min(255.0, new_color[0]) as u8,
                         f64::min(255.0, new_color[1]) as u8,
                         f64::min(255.0, new_color[2]) as u8,
                     ];
                     *pixel = Rgb(new_color);
-                }
+                },
             }
         }
     }
@@ -116,7 +122,16 @@ impl NearestPoint {
 impl<R: Rng> Algorithm<R> for NearestPoint {
     fn build(&mut self, rng: &mut R, img: &mut RgbImage) -> Result<(), String> {
         let num_points = max(2, img.width() * img.height() / 20000);
-        self.populate_points(rng, num_points.try_into().expect(format!("There were too many points for this algorithm to handle: {}", num_points).as_str()), img);
+        self.populate_points(
+            rng,
+            num_points.try_into().unwrap_or_else(|_| {
+                panic!(
+                    "There were too many points for this algorithm to handle: {}",
+                    num_points
+                )
+            }),
+            img,
+        );
         self.color_image(img);
         Ok(())
     }

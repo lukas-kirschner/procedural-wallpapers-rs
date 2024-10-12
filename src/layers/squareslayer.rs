@@ -1,7 +1,7 @@
+use crate::layers::{Layer, MixMode};
+use image::{Rgb, RgbImage};
 use std::borrow::Borrow;
 use std::cmp::max;
-use image::{Rgb, RgbImage};
-use crate::layers::{Layer, MixMode};
 
 /// A Squares Layer, representing "large pixels" with certain dimensions that can be drawn
 /// on top of an image.
@@ -16,13 +16,18 @@ pub struct SquaresLayer<Color: Default + Clone> {
 
 // Constructor
 impl<Color: Default + Clone> SquaresLayer<Color> {
-    pub fn new(squares_h: usize, squares_v: usize, squaresize_h: usize, squaresize_v: usize) -> Self {
+    pub fn new(
+        squares_h: usize,
+        squares_v: usize,
+        squaresize_h: usize,
+        squaresize_v: usize,
+    ) -> Self {
         SquaresLayer {
             squaresize_h,
             squaresize_v,
             squares_h,
             squares_v,
-            mixmode: MixMode::NORMAL,
+            mixmode: MixMode::Normal,
             data: vec![vec![Color::default(); squares_v]; squares_h],
         }
     }
@@ -77,9 +82,10 @@ impl<Color: Default + Clone> SquaresLayer<Color> {
     pub fn adjust_square_count_to_image_dimensions(&mut self, img_width: usize, img_height: usize) {
         self.squares_v = max(1, img_height / self.squaresize_v);
         self.squares_h = max(1, img_width / self.squaresize_h);
-        self.data.resize_with(self.squares_h, || { vec![Color::default(); self.squares_v] });
+        self.data
+            .resize_with(self.squares_h, || vec![Color::default(); self.squares_v]);
         for colvec in self.data.iter_mut() {
-            colvec.resize_with(self.squares_v, || { Color::default() });
+            colvec.resize_with(self.squares_v, || Color::default());
         }
     }
     pub fn set_color_at(&mut self, x: usize, y: usize, color: Color) {
@@ -98,7 +104,9 @@ impl SquaresLayer<[u8; 3]> {
         for x in x_start..x_end {
             for y in y_start..y_end {
                 let pixel = img.get_pixel_mut(x as u32, y as u32);
-                *pixel = Rgb(color);
+                match self.get_mix_mode() {
+                    MixMode::Normal => *pixel = Rgb(color),
+                };
             }
         }
     }
@@ -110,10 +118,18 @@ impl Layer for SquaresLayer<[u8; 3]> {
         let layerheight = self.squares_v * self.squaresize_v;
         let layerwidth = self.squares_h * self.squaresize_h;
         if layerheight > img.height() as usize {
-            return Err(format!("The image height of {} was smaller than the layer height of {}", img.height(), layerheight));
+            return Err(format!(
+                "The image height of {} was smaller than the layer height of {}",
+                img.height(),
+                layerheight
+            ));
         }
         if layerwidth > img.width() as usize {
-            return Err(format!("The image width of {} was smaller than the layer width of {}", img.width(), layerwidth));
+            return Err(format!(
+                "The image width of {} was smaller than the layer width of {}",
+                img.width(),
+                layerwidth
+            ));
         }
         for x in 0..self.squares_h() {
             for y in 0..self.squares_v() {
@@ -123,9 +139,9 @@ impl Layer for SquaresLayer<[u8; 3]> {
         Ok(())
     }
 
-    fn set_mix_mode(&mut self, mode: MixMode) {
-        self.mixmode = mode;
-    }
+    // fn set_mix_mode(&mut self, mode: MixMode) {
+    //     self.mixmode = mode;
+    // }
 
     fn get_mix_mode(&self) -> MixMode {
         self.mixmode

@@ -15,7 +15,25 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Nearest-Gradient" />
+    <list default="true" id="a8545222-e633-4572-814b-d67021e06f9f" name="Changes" comment="Implemented Nearest-Gradient">
+      <change beforePath="$PROJECT_DIR$/.idea/procedural-wallpapers-rs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/procedural-wallpapers-rs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Make_Thumbnails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Make_Thumbnails.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/cellularone.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/cellularone.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/clouds.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/clouds.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/flow.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/flow.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/islands.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/islands.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/lightning.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/lightning.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/nearestpoint.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/nearestpoint.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/squaresonedirection.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/tangles.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/tangles.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers/squareslayer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/squareslayer.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/perlin.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/perlin.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +50,9 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -40,6 +61,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -53,6 +77,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Cargo.Clippy.executor": "Run",
     "Cargo.Run Lightning.executor": "Run",
     "Cargo.Run Nearest Gradient.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -72,7 +97,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "actions.on.save",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -83,6 +108,7 @@
   </component>
   <component name="RunManager" selected="Shell Script.Make Thumbnails">
     <list>
+      <item itemvalue="Cargo.Clippy" />
       <item itemvalue="Cargo.Cargo Run" />
       <item itemvalue="Cargo.Run Lightning" />
       <item itemvalue="Cargo.Run Nearest Gradient" />
@@ -94,6 +120,9 @@
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="/usr/bin" />
     <option name="version" value="2" />
+  </component>
+  <component name="RustfmtProjectSettings">
+    <option name="useRustfmt" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -121,7 +150,7 @@
       <workItem from="1674487716828" duration="171000" />
       <workItem from="1676658610811" duration="1324000" />
       <workItem from="1676712026684" duration="57000" />
-      <workItem from="1728732973399" duration="1522000" />
+      <workItem from="1728732973399" duration="3240000" />
     </task>
     <task id="LOCAL-00001" summary="Removed Licensing Information from Readme">
       <created>1657630156537</created>
@@ -249,5 +278,9 @@
     <MESSAGE value="Implemented Horizontal and Vertical Random Squares" />
     <MESSAGE value="Implemented Nearest-Gradient" />
     <option name="LAST_COMMIT_MESSAGE" value="Implemented Nearest-Gradient" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
