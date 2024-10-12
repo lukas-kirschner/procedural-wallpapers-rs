@@ -1,8 +1,7 @@
 use std::borrow::BorrowMut;
 use std::path::PathBuf;
 use std::str::FromStr;
-use clap::Parser;
-use clap::ArgEnum;
+use clap::{Parser, ValueEnum};
 use clap::ValueHint;
 use image::{ImageBuffer, RgbImage};
 use crate::algorithms::Algorithm;
@@ -13,7 +12,7 @@ mod algorithms;
 mod utils;
 mod layers;
 
-#[derive(Debug, Copy, Clone, PartialEq, ArgEnum)]
+#[derive(Debug, Copy, Clone, PartialEq, ValueEnum)]
 enum Mode {
     CLOUDS,
     FLOW,
@@ -59,10 +58,10 @@ impl FromStr for Mode {
 
 /// Generate wallpapers procedurally with the given algorithm
 #[derive(Parser, PartialEq, Debug)]
-#[clap(author, version, about, long_about = None)]
+#[clap(author, version, about, long_about = None, disable_help_flag = true)]
 struct Args {
     /// Image generation mode
-    #[clap(short, long, arg_enum)]
+    #[clap(short, long)]
     mode: Mode,
     /// Desired width (pixels) of the generated image
     #[clap(short, long, value_parser, default_value_t = 1920)]
@@ -74,8 +73,11 @@ struct Args {
     #[clap(short, long, value_parser, default_value_t = 0)]
     seed: i32,
     /// The output file to save
-    #[clap(short, long, parse(from_os_str), value_hint = ValueHint::FilePath)]
+    #[clap(short, long, value_hint = ValueHint::FilePath)]
     output: PathBuf,
+    /// Open the command-line help
+    #[clap(long, action = clap::ArgAction::HelpLong)]
+    help: Option<bool>,
 }
 
 fn main() {
