@@ -1,8 +1,8 @@
-use crate::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
 use std::cmp::{max, min};
 use std::collections::HashSet;
+use crate::algorithms::Algorithm;
 
 /// A simple cellular automaton that iteratively processes pixel colors based on their neighbors,
 /// using a random algorithm for variations.

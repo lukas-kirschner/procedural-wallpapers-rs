@@ -1,0 +1,10 @@
+[package]
+name = "procedural_wallpapers"
+version.workspace = true
+edition.workspace = true
+description = "Procedural Wallpapers Generator - CLI tool"
+license-file.workspace = true
+
+[dependencies]
+clap = { version = "4.5.20", features = ["derive"] }
+wallpapers = {path = "../wallpapers"}
