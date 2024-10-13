@@ -1,7 +1,6 @@
 /// Perlin Noise Implementation in Rust
 use rand::Rng;
 
-
 pub struct Perlin {
     /// Width of the perlin noise
     width: usize,

@@ -4,10 +4,10 @@ use clap::ValueHint;
 use clap::{Parser, ValueEnum};
 use std::borrow::BorrowMut;
 use std::path::PathBuf;
-use wallpapers::{ChaCha8Rng, ImageBuffer, RgbImage, Rng, SeedableRng};
 use wallpapers::algorithms::Algorithm;
 use wallpapers::algorithms::*;
 use wallpapers::patterns::pattern::Patterns;
+use wallpapers::{ChaCha8Rng, ImageBuffer, RgbImage, Rng, SeedableRng};
 
 #[derive(Debug, Copy, Clone, PartialEq, ValueEnum)]
 enum Mode {
@@ -67,7 +67,6 @@ impl Mode {
         }
     }
 }
-
 
 /// Generate wallpapers procedurally with the given algorithm
 #[derive(Parser, PartialEq, Debug)]

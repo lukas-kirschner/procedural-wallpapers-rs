@@ -1,7 +1,7 @@
+use crate::algorithms::Algorithm;
 use crate::utils::perlin::Perlin;
 use image::{Rgb, RgbImage};
 use rand::Rng;
-use crate::algorithms::Algorithm;
 
 /// Islands
 /// Based on the ISLANDS algorithm implementation by Attila Bagyoni, 2018

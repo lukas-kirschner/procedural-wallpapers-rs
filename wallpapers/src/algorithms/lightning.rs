@@ -1,7 +1,7 @@
+use crate::algorithms::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
 use std::cmp::max;
-use crate::algorithms::Algorithm;
 
 /// Lightning
 /// Based on the LIGHTNING algorithm implementation by Attila Bagyoni, 2018

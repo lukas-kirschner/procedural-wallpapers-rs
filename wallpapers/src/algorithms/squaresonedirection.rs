@@ -1,9 +1,9 @@
+use crate::algorithms::Algorithm;
 use crate::layers::squareslayer::SquaresLayer;
 use crate::layers::Layer;
 use image::RgbImage;
 use rand::Rng;
 use std::cmp::{max, min};
-use crate::algorithms::Algorithm;
 
 enum Direction {
     Horizontal,

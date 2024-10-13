@@ -1,9 +1,9 @@
 //! Procedural Wallpapers in Rust - A collection of algorithms for procedural wallpaper generation.
 //!
-pub use rand_chacha::rand_core::SeedableRng;
-pub use rand_chacha::ChaCha8Rng;
 pub use image::{ImageBuffer, RgbImage};
 pub use rand::Rng;
+pub use rand_chacha::rand_core::SeedableRng;
+pub use rand_chacha::ChaCha8Rng;
 
 pub mod algorithms;
 pub mod layers;

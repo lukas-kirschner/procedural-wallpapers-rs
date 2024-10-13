@@ -1,8 +1,8 @@
+use crate::algorithms::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
 use std::cmp::max;
 use std::collections::HashSet;
-use crate::algorithms::Algorithm;
 
 enum PointDrawingMode {
     Hard,

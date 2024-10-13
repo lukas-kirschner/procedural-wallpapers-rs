@@ -1,8 +1,8 @@
+use crate::algorithms::Algorithm;
 use crate::utils::perlin::Perlin;
 use image::{Rgb, RgbImage};
 use rand::Rng;
 use std::f64::consts::PI;
-use crate::algorithms::Algorithm;
 
 /// Flow
 /// Based on the FLOW algorithm implementation by Attila Bagyoni, 2018

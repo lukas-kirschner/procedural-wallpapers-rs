@@ -33,7 +33,7 @@ impl Pattern {
             height: M,
         }
     }
-    pub fn enumerate_pixels(&self) -> impl Iterator<Item=(usize, usize, &PatternColor)> {
+    pub fn enumerate_pixels(&self) -> impl Iterator<Item = (usize, usize, &PatternColor)> {
         (0..self.height)
             .flat_map(move |h| (0..self.width).map(move |w| (w, h)))
             .map(|(x, y)| (x, y, &self.data[x][y]))
@@ -50,7 +50,11 @@ impl<R: Rng> Algorithm<R> for Pattern {
                 PatternColor::Alpha { .. } => todo!(),
                 PatternColor::Perlin { .. } => todo!(),
                 PatternColor::None => image::Rgb(old_val),
-                PatternColor::Random { minvalue, maxvalue } => image::Rgb([rng.gen_range(minvalue[0]..=maxvalue[0]), rng.gen_range(minvalue[1]..=maxvalue[1]), rng.gen_range(minvalue[2]..=maxvalue[2])]),
+                PatternColor::Random { minvalue, maxvalue } => image::Rgb([
+                    rng.gen_range(minvalue[0]..=maxvalue[0]),
+                    rng.gen_range(minvalue[1]..=maxvalue[1]),
+                    rng.gen_range(minvalue[2]..=maxvalue[2]),
+                ]),
             };
         }
         Ok(())
