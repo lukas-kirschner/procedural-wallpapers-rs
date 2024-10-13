@@ -1,16 +1,13 @@
-use crate::algorithms::Algorithm;
+//! Procedural Wallpapers in Rust - A command-line interface to generate wallpapers
+//!
 use clap::ValueHint;
 use clap::{Parser, ValueEnum};
-use image::{ImageBuffer, RgbImage};
-use rand_chacha::rand_core::SeedableRng;
-use rand_chacha::ChaCha8Rng;
 use std::borrow::BorrowMut;
 use std::path::PathBuf;
-use std::str::FromStr;
-
-mod algorithms;
-mod layers;
-mod utils;
+use wallpapers::algorithms::Algorithm;
+use wallpapers::algorithms::*;
+use wallpapers::patterns::pattern::Patterns;
+use wallpapers::{ChaCha8Rng, ImageBuffer, RgbImage, Rng, SeedableRng};
 
 #[derive(Debug, Copy, Clone, PartialEq, ValueEnum)]
 enum Mode {
@@ -44,12 +41,30 @@ enum Mode {
     Squares2V,
     #[clap(name = "nearestgradient")]
     NearestGradient,
+    #[clap(name = "pattern")]
+    Pattern,
 }
 
-impl FromStr for Mode {
-    type Err = String;
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        ValueEnum::from_str(s, true)
+impl Mode {
+    pub fn to_algorithm<R: Rng>(self) -> Box<dyn Algorithm<R>> {
+        match self {
+            Mode::Clouds => Box::new(Clouds {}),
+            Mode::Flow => Box::new(Flow::default()),
+            Mode::Islands => Box::new(Islands::default()),
+            Mode::Lightning => Box::new(Lightning::default()),
+            Mode::NearestPoint => Box::new(NearestPoint::default()),
+            Mode::Tangles => Box::new(Tangles::default()),
+            Mode::CellularOne => Box::new(CellularOne::default()),
+            Mode::Squares => Box::new(SquaresOneDirection::new_nodir()),
+            Mode::SquaresHor => Box::new(SquaresOneDirection::new_horiz()),
+            Mode::SquaresVer => Box::new(SquaresOneDirection::new_vert()),
+            Mode::SquaresDiag => Box::new(SquaresOneDirection::new_diag()),
+            Mode::Squares2 => Box::new(SquaresOneDirection::new_nodir_randomized()),
+            Mode::Squares2H => Box::new(SquaresOneDirection::new_horiz_randomized()),
+            Mode::Squares2V => Box::new(SquaresOneDirection::new_vert_randomized()),
+            Mode::NearestGradient => Box::new(NearestPoint::new_soft()),
+            Mode::Pattern => Box::new(Patterns::diamond()),
+        }
     }
 }
 

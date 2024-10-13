@@ -1,4 +1,4 @@
-use crate::Algorithm;
+use crate::algorithms::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
 use std::cmp::{max, min};

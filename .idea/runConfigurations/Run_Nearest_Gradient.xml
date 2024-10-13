@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run Nearest Gradient" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-    <option name="command" value=" run -- --mode nearestgradient --width 400 --height 400 --seed 1234 -o /tmp/procedural-wallpaper.png" />
+    <option name="command" value=" run --package procedural_wallpapers -- --mode nearestgradient --width 400 --height 400 --seed 1234 -o /tmp/procedural-wallpaper.png" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$" />
     <envs>
       <env name="RUST_BACKTRACE" value="full" />

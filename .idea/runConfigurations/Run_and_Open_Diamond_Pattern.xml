@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Make Thumbnails" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="make clean &amp;&amp; make thumbnails" />
+  <configuration default="false" name="Run and Open Diamond Pattern" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value="xdg-open /tmp/procedural-wallpaper.png" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />
@@ -13,7 +13,7 @@
     <option name="EXECUTE_SCRIPT_FILE" value="false" />
     <envs />
     <method v="2">
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Clippy" run_configuration_type="CargoCommandRunConfiguration" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Run Diamond Pattern" run_configuration_type="CargoCommandRunConfiguration" run_configuration_target="RsBuildProfile:dev" />
     </method>
   </configuration>
 </component>

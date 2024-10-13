@@ -1,16 +1,17 @@
-[package]
-name = "procedural_wallpapers"
+[workspace]
+resolver = "2"
+members = [
+    "procedural_wallpapers",
+    "wallpapers"
+]
+
+[workspace.package]
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE.md"
 
 [profile.dev]
 opt-level = 0
 
 [profile.release]
 opt-level = 3
-
-[dependencies]
-image = "0.25.2"
-clap = { version = "4.5.20", features = ["derive"] }
-rand = "0.8.5"
-rand_chacha = "0.3.1"

@@ -1,7 +1,8 @@
+use crate::algorithms::Algorithm;
 use crate::utils::perlin::Perlin;
-use crate::Algorithm;
 use image::{Rgb, RgbImage};
 use rand::Rng;
+
 #[derive(Default)]
 pub struct Tangles {}
 
