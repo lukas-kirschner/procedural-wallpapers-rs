@@ -4,10 +4,10 @@ use clap::ValueHint;
 use clap::{Parser, ValueEnum};
 use std::borrow::BorrowMut;
 use std::path::PathBuf;
-use std::str::FromStr;
 use wallpapers::{ChaCha8Rng, ImageBuffer, RgbImage, Rng, SeedableRng};
 use wallpapers::algorithms::Algorithm;
 use wallpapers::algorithms::*;
+use wallpapers::patterns::pattern::Patterns;
 
 #[derive(Debug, Copy, Clone, PartialEq, ValueEnum)]
 enum Mode {
@@ -41,13 +41,8 @@ enum Mode {
     Squares2V,
     #[clap(name = "nearestgradient")]
     NearestGradient,
-}
-
-impl FromStr for Mode {
-    type Err = String;
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        ValueEnum::from_str(s, true)
-    }
+    #[clap(name = "pattern")]
+    Pattern,
 }
 
 impl Mode {
@@ -68,6 +63,7 @@ impl Mode {
             Mode::Squares2H => Box::new(SquaresOneDirection::new_horiz_randomized()),
             Mode::Squares2V => Box::new(SquaresOneDirection::new_vert_randomized()),
             Mode::NearestGradient => Box::new(NearestPoint::new_soft()),
+            Mode::Pattern => Box::new(Patterns::diamond()),
         }
     }
 }
